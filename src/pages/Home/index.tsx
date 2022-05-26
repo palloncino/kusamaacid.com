@@ -1,10 +1,10 @@
 import { Text } from '../../components';
 import './style.css';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="home-page-wrapper">
-      <Text>HOMEPAGE</Text>
+    <div className="home-wrapper">
+      <Text>HOME</Text>
     </div>
   );
 }

@@ -1,0 +1,58 @@
+import { ReactNode } from 'react';
+import './Text.css';
+
+enum EnumTextType {
+  h1 = 'h1',
+  h3 = 'h3',
+  h4 = 'h4',
+  regular = 'regular',
+  small = 'small',
+  tooltip = 'tooltip'
+}
+interface ITextProps {
+  children?: ReactNode;
+  textType?: string;
+}
+
+export const Text = ({ children, textType }: ITextProps) => {
+
+  function getOutput(type: string) {
+
+    let output: ReactNode;
+
+    switch (type) {
+      case EnumTextType.h1:
+        output = <h1 className={`text text-${type}`}>{children}</h1>;
+        break;
+
+      case EnumTextType.h3:
+        output = <h3 className={`text text-${type}`}>{children}</h3>;
+        break;
+
+      case EnumTextType.h4:
+        output = <h4 className={`text text-${type}`}>{children}</h4>;
+        break;
+
+      case EnumTextType.regular:
+        output = <p className={`text text-${type}`}>{children}</p>;
+        break;
+
+      case EnumTextType.small:
+        output = <p className={`text text-${type}`}>{children}</p>;
+        break;
+
+      case EnumTextType.tooltip:
+        output = <p className={`text text-${type}`}>{children}</p>;
+        break;
+
+      default:
+        output = <p className={'text-regular'}>{children}</p>;
+        break;
+    }
+
+    return output;
+
+  }
+
+  return <>{getOutput(textType as string)}</>;
+};

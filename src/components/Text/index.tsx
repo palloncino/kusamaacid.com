@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import './Text.css';
 
 enum EnumTextType {
@@ -13,7 +13,7 @@ enum EnumTextType {
 interface ITextProps {
   children?: ReactNode;
   textType?: string;
-  onClick?: (event?: any) => any;
+  onClick?: (event?: MouseEvent<HTMLElement>) => void;
 }
 
 export const Text = ({ children, textType, onClick }: ITextProps) => {

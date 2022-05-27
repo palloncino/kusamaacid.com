@@ -1,3 +1,4 @@
 import { Text } from './Text';
+import { Header } from './Header';
 
-export { Text };
+export { Text, Header };

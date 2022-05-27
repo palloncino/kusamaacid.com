@@ -1,10 +1,10 @@
 import { Text } from '../../components';
-import './Home.css';
+import './Pills.css';
 
-export default function Home() {
+export default function Pills() {
   return (
     <div className="home-wrapper">
-      <Text>HOME</Text>
+      <Text>Pills</Text>
     </div>
   );
 }

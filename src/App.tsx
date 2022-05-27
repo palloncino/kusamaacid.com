@@ -1,23 +1,20 @@
-import React from 'react';
-
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import pageBuilder from './pages/PageBuilder';
-// import Home from './pages/Home';
-// import Roadmap from './pages/Roadmap';
-// import { Pills } from './pages/Pills';
-// import { Faq } from './pages/Faq';
-// import { Contacts } from './pages/Contacts';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import ComponentFrame from './pages/FrameBuilder';
 
 const App = () => (
+
   <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={() => pageBuilder('home')} />
-      {/* <Route path="/roadmap" exact component={Roadmap} /> */}
-      {/* TODO: complete pages */}
-      {/* <Route path="/pills" exact component={Pills} /> */}
-      {/* <Route path="/faqs" exact component={Faqs} /> */}
-      {/* <Route path="/contacts" exact component={Contacts} /> */}
-    </Switch>
+    <Routes>
+      <Route path="/" element={<ComponentFrame view="home" />} />
+      <Route path="/roadmap" element={<ComponentFrame view="roadmap" />} />
+      <Route path="/pills" element={<ComponentFrame view="pills" />} />
+      <Route path="/faqs" element={<ComponentFrame view="faqs" />} />
+      <Route path="/contacts" element={<ComponentFrame view="contacts" />} />
+    </Routes>
   </BrowserRouter>
 );
 

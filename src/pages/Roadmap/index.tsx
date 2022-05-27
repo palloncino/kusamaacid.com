@@ -1,5 +1,5 @@
 import { Text } from '../../components';
-import './style.css';
+import './Roadmap.css';
 
 function Roadmap() {
   return (

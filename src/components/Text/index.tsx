@@ -7,7 +7,8 @@ enum EnumTextType {
   h4 = 'h4',
   regular = 'regular',
   small = 'small',
-  tooltip = 'tooltip'
+  tooltip = 'tooltip',
+  link = 'link'
 }
 interface ITextProps {
   children?: ReactNode;
@@ -43,6 +44,10 @@ export const Text = ({ children, textType }: ITextProps) => {
 
       case EnumTextType.tooltip:
         output = <p className={`text text-${type}`}>{children}</p>;
+        break;
+
+      case EnumTextType.link:
+        output = <span className={`text text-${type}`}>{children}</span>;
         break;
 
       default:

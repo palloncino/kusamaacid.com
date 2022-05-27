@@ -1,0 +1,29 @@
+{
+    "routes": [
+        {
+            "name": "home",
+            "label": "Home",
+            "path": "/"
+        },
+        {
+            "name": "roadmap",
+            "label": "Roadmap",
+            "path": "/roadmap"
+        },
+        {
+            "name": "pills",
+            "label": "Pills",
+            "path": "/pills"
+        },
+        {
+            "name": "faqs",
+            "label": "Faqs",
+            "path": "/faqs"
+        },
+        {
+            "name": "contacts",
+            "label": "Contacts",
+            "path": "/contacts"
+        }
+    ]
+}

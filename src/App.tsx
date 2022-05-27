@@ -1,19 +1,24 @@
 import {
-  BrowserRouter,
-  Routes,
-  Route,
+  BrowserRouter, Route, Routes
 } from 'react-router-dom';
+import { ViewType } from './interfaces';
 import ComponentFrame from './pages/FrameBuilder';
+import json from './settings.json';
+
+const { routes } = json;
 
 const App = () => (
-
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<ComponentFrame view="home" />} />
-      <Route path="/roadmap" element={<ComponentFrame view="roadmap" />} />
-      <Route path="/pills" element={<ComponentFrame view="pills" />} />
-      <Route path="/faqs" element={<ComponentFrame view="faqs" />} />
-      <Route path="/contacts" element={<ComponentFrame view="contacts" />} />
+      {routes.map(({name, path}) => 
+        <Route 
+          key={name} 
+          path={path} 
+          element={
+            <ComponentFrame 
+              view={name as ViewType} />
+          } />
+      )}
     </Routes>
   </BrowserRouter>
 );

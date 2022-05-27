@@ -1,9 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Header } from '../../components';
-
-interface IComponentFrame {
-  view: 'home' | 'roadmap' | 'pills' | 'faqs' | 'contacts';
-}
+import { IComponentFrame } from '../../interfaces';
 
 const ComponentFrame = ({view}: IComponentFrame) => {
 

@@ -47,7 +47,13 @@ export const Text = ({ children, textType }: ITextProps) => {
         break;
 
       case EnumTextType.link:
-        output = <span className={`text text-${type}`}>{children}</span>;
+        output = (
+          <div className={`${type}-container`}>
+            <span className={`text text-${type}`}>
+              {children}
+            </span>
+          </div>
+        );
         break;
 
       default:

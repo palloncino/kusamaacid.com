@@ -13,9 +13,10 @@ enum EnumTextType {
 interface ITextProps {
   children?: ReactNode;
   textType?: string;
+  onClick?: (event?: any) => any;
 }
 
-export const Text = ({ children, textType }: ITextProps) => {
+export const Text = ({ children, textType, onClick }: ITextProps) => {
 
   function getOutput(type: string) {
 
@@ -48,7 +49,7 @@ export const Text = ({ children, textType }: ITextProps) => {
 
       case EnumTextType.link:
         output = (
-          <div className={`${type}-container`}>
+          <div className={`${type}-container`} onClick={onClick}>
             <span className={`text text-${type}`}>
               {children}
             </span>

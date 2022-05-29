@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Header, Navbar } from '../../components';
+import { Spinner } from '../../components/Spinner';
 import { IComponentFrame } from '../../interfaces';
 
 const ComponentFrame = ({view}: IComponentFrame) => {
@@ -33,7 +34,7 @@ const ComponentFrame = ({view}: IComponentFrame) => {
       <Header />
       <Navbar />
       <div className="page-content-wrapper">
-        <Suspense fallback={'TODO: error getting the selected view'}>
+        <Suspense fallback={Spinner}>
           <Component />
         </Suspense>
       </div>

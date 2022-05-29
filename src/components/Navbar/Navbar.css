@@ -8,5 +8,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
+    background-color: orange;
+}
+
+@media only screen and (min-width: 980px) {
+    
+    .navbar-container {
+        background-color: red;
+    }
 }

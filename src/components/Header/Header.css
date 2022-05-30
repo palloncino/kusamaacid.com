@@ -3,11 +3,13 @@
 }
 
 .header-container {
+    background: url('https://kusama-acid-media.s3.amazonaws.com/banners/kusama-acid-pills-banner-static-1.jpg');
+    background-size: cover;
+    background-position: center;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    background: yellow;
+    height: 500px;
 }

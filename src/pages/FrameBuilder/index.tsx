@@ -34,7 +34,7 @@ const ComponentFrame = ({view}: IComponentFrame) => {
       <Header />
       <Navbar />
       <div className="page-content-wrapper">
-        <Suspense fallback={Spinner}>
+        <Suspense fallback={<Spinner />}>
           <Component />
         </Suspense>
       </div>

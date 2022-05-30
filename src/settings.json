@@ -1,29 +1,46 @@
 {
-    "routes": [
-        {
-            "name": "home",
-            "label": "Home",
-            "path": "/"
-        },
-        {
-            "name": "roadmap",
-            "label": "Roadmap",
-            "path": "/roadmap"
-        },
-        {
-            "name": "pills",
-            "label": "Pills",
-            "path": "/pills"
-        },
-        {
-            "name": "faqs",
-            "label": "Faqs",
-            "path": "/faqs"
-        },
-        {
-            "name": "contacts",
-            "label": "Contacts",
-            "path": "/contacts"
-        }
-    ]
+  "routes": [
+    {
+      "name": "home",
+      "label": "Home",
+      "path": "/"
+    },
+    {
+      "name": "roadmap",
+      "label": "Roadmap",
+      "path": "/roadmap"
+    },
+    {
+      "name": "pills",
+      "label": "Pills",
+      "path": "/pills"
+    },
+    {
+      "name": "faqs",
+      "label": "Faqs",
+      "path": "/faqs"
+    },
+    {
+      "name": "contacts",
+      "label": "Contacts",
+      "path": "/contacts"
+    }
+  ],
+  "pills": [
+    "ANGEL",
+    "BOB MARLEY",
+    "BULL",
+    "CAR",
+    "DEVIL",
+    "DRAGON",
+    "GORILLA",
+    "KING",
+    "KITTY",
+    "NINJA",
+    "PACMAN",
+    "PENGUIN",
+    "POKEMON",
+    "TRUMP",
+    "VIOLET BUTTERFLY"
+  ]
 }

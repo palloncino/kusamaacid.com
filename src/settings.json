@@ -14,16 +14,6 @@
       "name": "pills",
       "label": "Pills",
       "path": "/pills"
-    },
-    {
-      "name": "faqs",
-      "label": "Faqs",
-      "path": "/faqs"
-    },
-    {
-      "name": "contacts",
-      "label": "Contacts",
-      "path": "/contacts"
     }
   ],
   "pills": [

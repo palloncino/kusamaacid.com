@@ -12,7 +12,7 @@ export default function Pills() {
         return (
           <div key={pill} className='pill-container' style={{ maxWidth: '300px' }}>
             <video width="100%" controls>
-              <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}/${pill}+PILL.mp4`} type="video/mp4" />
+              <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
             </video>
           </div>
         )

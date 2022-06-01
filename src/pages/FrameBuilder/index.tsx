@@ -1,9 +1,12 @@
 import { lazy, Suspense } from 'react';
-import { Header, Navbar } from '../../components';
+import { Container, Header, Navbar } from '../../components';
 import { Spinner } from '../../components/Spinner';
 import { IComponentFrame } from '../../interfaces';
+import { useWhatDevice } from '../../hooks/useWhatDevice';
 
-const ComponentFrame = ({view}: IComponentFrame) => {
+const ComponentFrame = ({ view }: IComponentFrame) => {
+
+  const { device } = useWhatDevice();
 
   const getViewPath = () => {
     switch (view) {
@@ -21,7 +24,7 @@ const ComponentFrame = ({view}: IComponentFrame) => {
 
       case 'contacts':
         return 'Contacts';
-    
+
       default:
         return 'Home';
     }
@@ -30,13 +33,15 @@ const ComponentFrame = ({view}: IComponentFrame) => {
   const Component = lazy(() => import(`../${getViewPath()}`));
 
   return (
-    <div className="layout-wrapper">
+    <div className={`${device} layout-wrapper`}>
       <Header />
       <Navbar />
       <div className="page-content-wrapper">
-        <Suspense fallback={<Spinner />}>
-          <Component />
-        </Suspense>
+        <Container>
+          <Suspense fallback={<Spinner />}>
+            <Component />
+          </Suspense>
+        </Container>
       </div>
     </div>
   );

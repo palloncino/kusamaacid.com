@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
+import './Container.css';
 
 interface IContainerProps {
-  type?: 'fluid';
   children?: ReactNode;
 }
 
-export const Container = ({children, type}: IContainerProps) => {
+export const Container = ({ children }: IContainerProps) => {
   return (
-    <div className={`container container-${type}`}>
+    <div className="container">
       {children}
     </div>
   );

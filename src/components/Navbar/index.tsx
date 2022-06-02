@@ -22,7 +22,11 @@ export const Navbar = () => {
   const renderDrawer = () => {
     return (
       <Fragment>
-        <Button style={{ background: 'black' }} onClick={toggleDrawer}>MENU</Button>
+        <div className='drawer-button-container' onClick={toggleDrawer}>
+          <span className='drawer-button'>
+            MENU
+          </span>
+        </div>
         <Drawer
           open={isOpen}
           onClose={toggleDrawer}
@@ -43,9 +47,7 @@ export const Navbar = () => {
 
   return (
     <div className="navbar-wrapper">
-      <Container>
-        {isMobile ? renderDrawer() : renderHoriNav()}
-      </Container>
+      {isMobile ? renderDrawer() : renderHoriNav()}
     </div>
   );
 };

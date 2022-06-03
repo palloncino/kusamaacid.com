@@ -14,10 +14,16 @@ interface ILink {
 }
 
 export const Navbar = () => {
-  const { isMobile } = useWhatDevice();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {isMobile} = useWhatDevice();
+  const [isOpen, setIsOpen] = useState(false);
+  const [openedOnce, setOpenedOnce] = useState(false);
 
-  const toggleDrawer = () => setIsOpen(!isOpen);
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+    setTimeout(() => {
+      setOpenedOnce(true);
+    }, 10000);
+  };
 
   return (
     <div className="navbar-wrapper">
@@ -34,10 +40,14 @@ export const Navbar = () => {
             onOpen={toggleDrawer}
             transitionDuration={{appear: 200, enter: 200, exit: 200}}
           >
-            <div className="swipeable-drawer-child" style={{ marginBottom: '2rem' }}>
-              <video width="100%" autoPlay>
-                <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_BANNERS}kusama-acid-pills-banner-dynamic.mp4`} type="video/mp4" />
-              </video>
+            <div className="swipeable-drawer-child" style={{ marginBottom: '2rem', minHeight: '14.3rem' }}>
+              {!openedOnce ? (
+                <video width="100%" autoPlay>
+                  <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_BANNERS}kusama-acid-pills-banner-dynamic.mp4`} type="video/mp4" />
+                </video>
+              ) : (
+                <div  className="swipeable-drawer-child-header" />
+              )}
             </div>
             {routes.map(({name, path, label}: ILink) => {
               return (

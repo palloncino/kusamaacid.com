@@ -13,3 +13,21 @@
     align-items: center;
     height: 500px;
 }
+
+.MuiDrawer-root {
+    background: transparent;
+}
+
+.MuiDrawer-root .MuiDrawer-paper {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.MuiDrawer-root .MuiDrawer-paper .link-container {
+    min-height: 100px;
+    height: unset;
+}

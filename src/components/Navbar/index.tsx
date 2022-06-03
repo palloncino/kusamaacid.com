@@ -1,11 +1,17 @@
-import { Button, Drawer } from '@mui/material';
-import { Fragment, useState } from 'react';
+import { Drawer } from '@mui/material';
+import { FC, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Text, Container } from '../';
+import { Text } from '../';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import json from '../../settings.json';
 import './Navbar.css';
 const { routes } = json;
+
+interface ILink {
+  name: string,
+  path: string,
+  label: string
+}
 
 export const Navbar = () => {
 
@@ -16,6 +22,9 @@ export const Navbar = () => {
   const toggleDrawer = () => setIsOpen(!isOpen);
 
   const handleNavigate = (path: string) => {
+    if (isOpen) {
+      toggleDrawer(); 
+    }
     return navigate(path);
   };
 
@@ -31,7 +40,7 @@ export const Navbar = () => {
           open={isOpen}
           onClose={toggleDrawer}
         >
-          {routes.map(str => <Text key={str.name} textType='link' onClick={() => handleNavigate(str.path)}>{str.label}</Text>)}
+          {routes.map(({name, path, label}: ILink) => <Text key={name} textType='link' onClick={() => handleNavigate(path)}>{label}</Text>)}
         </Drawer>
       </Fragment>
     );
@@ -40,7 +49,7 @@ export const Navbar = () => {
   const renderHoriNav = () => {
     return (
       <div className="navbar-container">
-        {routes.map(str => <Text key={str.name} textType='link' onClick={() => handleNavigate(str.path)}>{str.label}</Text>)}
+        {routes.map(({name, path, label}: ILink) => <Text key={name} textType='link' onClick={() => handleNavigate(path)}>{label}</Text>)}
       </div>
     );
   };

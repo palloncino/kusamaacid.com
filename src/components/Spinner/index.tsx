@@ -1,3 +1,4 @@
+import { LinearProgress } from '@mui/material';
 import './Spinner.css';
 
 interface ISpinner {
@@ -8,7 +9,7 @@ export const Spinner = ({ size = 'regular' }: ISpinner) => {
 
   return (
     <div className={`spinner spinner-${size}`}>
-      Loading ...
+      <LinearProgress color='secondary'/>
     </div>
   );
 };

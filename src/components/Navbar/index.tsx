@@ -34,7 +34,19 @@ export const Navbar = () => {
             onOpen={toggleDrawer}
             transitionDuration={{appear: 200, enter: 200, exit: 200}}
           >
-            {routes.map(({name, path, label}: ILink) => <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>) }
+            <div className="swipeable-drawer-child" style={{ marginBottom: '2rem' }}>
+              <video width="100%" autoPlay>
+                <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_BANNERS}kusama-acid-pills-banner-dynamic.mp4`} type="video/mp4" />
+              </video>
+            </div>
+            {routes.map(({name, path, label}: ILink) => {
+              return (
+                <div key={name} className="swipeable-drawer-child">
+                  <NavLink onClick={toggleDrawer} className="navbar-link" to={path}>{label}</NavLink>
+                </div>
+              );
+            })
+            }
           </SwipeableDrawer>
         </Fragment>
       ) : (

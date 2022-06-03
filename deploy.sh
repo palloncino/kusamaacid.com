@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BUCKET=kusama-acid
+BUCKET=kusamaacid.com
 SOURCE_DIR=build/
 
 
@@ -23,6 +23,6 @@ aws s3 sync ${SOURCE_DIR} s3://${BUCKET}/
 echo "S3 Upload complete"
 
 echo "Invalidating cloudfrond distribution to get fresh cache"
-aws cloudfront create-invalidation --distribution-id=<EXAMPLE:E3594681PN0YA1> --paths / --profile=<EXAMPLE:antonioguiotto>
+aws cloudfront create-invalidation --distribution-id=EG7IT3TWAGSLS --paths / --profile=a2
 
 echo "Deployment complete"  

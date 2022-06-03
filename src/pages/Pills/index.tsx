@@ -19,11 +19,11 @@ export default function Pills() {
               onClick={(e) => {
                 if (activeNft === pill) {
                   setActiveNft(undefined);
-                  return (e.target as any).pause();
+                  return (e.target as any).pause(); // eslint-disable-line @typescript-eslint/no-explicit-any
                 }
                 document.querySelectorAll('video').forEach(vid => vid.pause());
                 setActiveNft(pill);
-                (e.target as any).play();
+                (e.target as any).play(); // eslint-disable-line @typescript-eslint/no-explicit-any
               }}
             >
               <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />

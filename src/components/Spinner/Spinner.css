@@ -1,3 +1,6 @@
+.spinner {
+    padding: 2rem 0;
+}
 .spinner.spinner-small {
     font-size: .8rem;    
 }
@@ -6,4 +9,13 @@
 }
 .spinner.spinner-large {
     font-size: 2rem;    
+}
+
+/* MUI */
+
+.spinner .MuiLinearProgress-colorSecondary {
+    background: #e0328690;
+}
+.spinner .MuiLinearProgress-bar {
+    background: #E03286;
 }

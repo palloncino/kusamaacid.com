@@ -11,7 +11,7 @@
 }
 
 .header-container {
-    background: url('file:///Users/antonioguiotto/Desktop/kusama-acid-pills-banner-static-1.jpg'), black; /* TODO */
+    background: url('https://kusama-acid-media.s3.amazonaws.com/banners/kusama-acid-pills-banner-static-1.jpg'), black; /* TODO */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -32,7 +32,7 @@
         margin-bottom: 2rem;
     }
     .header-container {
-        background: url('file:///Users/antonioguiotto/Desktop/kusama-acid-pills-banner-static-1-MOBILE.jpg'), black; /* TODO */
+        background: url('https://kusama-acid-media.s3.amazonaws.com/banners/kusama-acid-pills-banner-static-1-MOBILE.jpg'), black; /* TODO */
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

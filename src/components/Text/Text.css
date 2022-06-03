@@ -3,7 +3,17 @@ div, h1, h2, h3, h4, h5, h6, p, ul, li, span {
     margin: 0;
 }
 
+@font-face {
+    font-family: CustomFont;
+    src: url(../../fonts/Saira-Regular.ttf);
+}
+
+.navbar-link {
+    font-family: CustomFont;
+}
+
 .text {
+    font-family: CustomFont;
     padding: 0;
     margin: 0;
     line-height: 2.5rem;

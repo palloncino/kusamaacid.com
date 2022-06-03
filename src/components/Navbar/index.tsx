@@ -1,7 +1,7 @@
 import { SwipeableDrawer } from '@mui/material';
 import { Fragment, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Text } from '../';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Container, Text } from '../';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import json from '../../settings.json';
 import './Navbar.css';
@@ -28,21 +28,13 @@ export const Navbar = () => {
     return navigate(path);
   };
 
-  const renderHoriNav = () => {
-    return (
-      <div className="navbar-container">
-        {routes.map(({name, path, label}: ILink) => <Text key={name} textType='link' onClick={() => handleNavigate(path)}>{label}</Text>)}
-      </div>
-    );
-  };
-
   return (
     <div className="navbar-wrapper">
       {isMobile ? (
         <Fragment>
           <div className='drawer-button-container' onClick={toggleDrawer}>
             <span className='drawer-button'>
-            MENU
+              lll
             </span>
           </div>
           <SwipeableDrawer
@@ -51,10 +43,16 @@ export const Navbar = () => {
             onOpen={toggleDrawer}
             transitionDuration={{appear: 200, enter: 200, exit: 200}}
           >
-            {routes.map(({name, path, label}: ILink) => <Text key={name} textType='link' onClick={() => handleNavigate(path)}>{label}</Text>)}
+            {routes.map(({name, path, label}: ILink) => <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>) }
           </SwipeableDrawer>
         </Fragment>
-      ) : renderHoriNav()}
+      ) : (
+        <Container>
+          <div className="navbar-container">
+            {routes.map(({name, path, label}: ILink) => <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>) }
+          </div>
+        </Container>
+      )}
     </div>
   );
 };

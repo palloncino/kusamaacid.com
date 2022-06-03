@@ -1,21 +1,35 @@
-import { Text } from '../../components';
+import { useState } from 'react';
 import json from '../../settings.json';
 import './Pills.css';
 
 const { pills } = json;
 
 export default function Pills() {
+
+  const [activeNft, setActiveNft] = useState<string | undefined>(undefined);
+
   return (
-    <div className="home-wrapper">
-      <Text>Pills</Text>
+    <div className="nft-wrapper">
       {pills.map(pill => {
         return (
-          <div key={pill} className='pill-container' style={{ maxWidth: '300px' }}>
-            <video width="100%" controls>
+          <div key={pill} className='nft-container'>
+            <video
+              id={pill}
+              width="100%"
+              onClick={(e) => {
+                if (activeNft === pill) {
+                  setActiveNft(undefined);
+                  return (e.target as any).pause();
+                }
+                document.querySelectorAll('video').forEach(vid => vid.pause());
+                setActiveNft(pill);
+                (e.target as any).play();
+              }}
+            >
               <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
             </video>
           </div>
-        )
+        );
       })}
     </div>
   );

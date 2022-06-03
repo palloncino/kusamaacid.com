@@ -4,6 +4,8 @@ import { Spinner } from '../../components/Spinner';
 import { IComponentFrame } from '../../interfaces';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 
+import './Layout.css';
+
 const ComponentFrame = ({ view }: IComponentFrame) => {
 
   const { device } = useWhatDevice();
@@ -28,8 +30,8 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
 
   return (
     <div className={`${device} layout-wrapper`}>
-      <Header />
       <Navbar />
+      <Header />
       <div className="page-content-wrapper">
         <Container>
           <Suspense fallback={<Spinner />}>

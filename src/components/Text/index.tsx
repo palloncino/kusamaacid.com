@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode } from 'react';
 import './Text.css';
 
 enum EnumTextType {
@@ -8,15 +8,13 @@ enum EnumTextType {
   regular = 'regular',
   small = 'small',
   tooltip = 'tooltip',
-  link = 'link'
 }
 interface ITextProps {
   children?: ReactNode;
   textType?: string;
-  onClick?: (event?: MouseEvent<HTMLElement>) => void;
 }
 
-export const Text = ({ children, textType, onClick }: ITextProps) => {
+export const Text = ({ children, textType }: ITextProps) => {
 
   function getOutput(type: string) {
 
@@ -45,16 +43,6 @@ export const Text = ({ children, textType, onClick }: ITextProps) => {
 
       case EnumTextType.tooltip:
         output = <p className={`text text-${type}`}>{children}</p>;
-        break;
-
-      case EnumTextType.link:
-        output = (
-          <div className={`${type}-container`} onClick={onClick}>
-            <span className={`text text-${type}`}>
-              {children}
-            </span>
-          </div>
-        );
         break;
 
       default:

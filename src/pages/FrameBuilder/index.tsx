@@ -19,12 +19,6 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
       case 'pills':
         return 'Pills';
 
-      case 'faqs':
-        return 'Faqs';
-
-      case 'contacts':
-        return 'Contacts';
-
       default:
         return 'Home';
     }

@@ -1,4 +1,3 @@
-import { Text } from '../';
 import './Header.css';
 
 export const Header = () => {

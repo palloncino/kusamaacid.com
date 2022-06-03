@@ -1,7 +1,7 @@
 import { SwipeableDrawer } from '@mui/material';
 import { Fragment, useState } from 'react';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Container, Text } from '../';
+import { NavLink } from 'react-router-dom';
+import { Container } from '../';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import json from '../../settings.json';
 import './Navbar.css';
@@ -14,19 +14,10 @@ interface ILink {
 }
 
 export const Navbar = () => {
-
   const { isMobile } = useWhatDevice();
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);
-
-  const handleNavigate = (path: string) => {
-    if (isOpen) {
-      toggleDrawer(); 
-    }
-    return navigate(path);
-  };
 
   return (
     <div className="navbar-wrapper">

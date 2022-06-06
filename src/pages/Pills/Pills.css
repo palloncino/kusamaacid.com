@@ -4,6 +4,7 @@
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     column-gap: 2rem;
     row-gap: 2rem;
+    box-sizing: border-box;
 }
 
 .nft-container {
@@ -15,8 +16,21 @@
     .nft-wrapper {
         display: grid;
         grid-template-columns: repeat(1, minmax(200px, 1fr));
+        box-sizing: border-box;
     }
     
     .nft-container {
+        position: relative;
+    }
+
+    .nft-video-container {
+        position: relative;
+        border: 2px solid green;
+    }
+
+    .nft-loader-container {
+        position: absolute;
+        top: 0;
+        border: 2px solid red;
     }
 }

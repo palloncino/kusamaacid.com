@@ -1,6 +1,9 @@
 .spinner {
     padding: 2rem 0;
 }
+.spinner.no-padding {
+    padding: 0rem;
+}
 .spinner.spinner-small {
     font-size: .8rem;    
 }

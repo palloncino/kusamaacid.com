@@ -42,7 +42,7 @@ export const Navbar = () => {
           >
             <div className="swipeable-drawer-child" style={{ marginBottom: '2rem', minHeight: '14.3rem' }}>
               {!openedOnce ? (
-                <video width="100%" autoPlay>
+                <video width="100%" autoPlay playsInline>
                   <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_BANNERS}kusama-acid-pills-banner-dynamic.mp4`} type="video/mp4" />
                 </video>
               ) : (

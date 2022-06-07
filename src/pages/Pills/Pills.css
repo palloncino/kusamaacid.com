@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: CustomFont;
+    src: url(../../fonts/Saira-Regular.ttf);
+}
+
 .nft-wrapper {
     margin: 2rem;
     display: grid;
@@ -13,6 +19,17 @@
 
 .NFT {
     cursor: pointer;
+}
+
+.MuiCard-root {
+    font-family: CustomFont;
+    background: transparent;
+    color: #E03286;
+}
+
+.MuiCardActions-root {
+    font-family: CustomFont;
+    color: #E03286;
 }
 
 @media only screen and (max-width: 768px) {

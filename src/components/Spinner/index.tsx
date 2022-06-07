@@ -1,16 +1,18 @@
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, CircularProgress } from '@mui/material';
 import './Spinner.css';
 
 interface ISpinner {
   size?: 'small' | 'regular' | 'large';
   noPadding?: boolean;
+  type?: 1 | 2;
+  color?: 'primary' | 'secondary';
 }
 
-export const Spinner = ({ size = 'regular', noPadding }: ISpinner) => {
+export const Spinner = ({ color = 'secondary', size = 'regular', noPadding, type = 2 }: ISpinner) => {
 
   return (
     <div className={`spinner spinner-${size} ${noPadding ? 'no-padding' : ''}`}>
-      <LinearProgress color='secondary'/>
+      {type === 1 ? <CircularProgress color={color} /> : <LinearProgress color={color}/ >}
     </div>
   );
 };

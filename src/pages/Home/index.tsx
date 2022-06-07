@@ -5,13 +5,17 @@ export default function Home() {
   
   return (
     <div className="home-wrapper">
-      <Text textType="h3">CURRENT PROJECT</Text>
+      <Text textType="h1">FRESH NEW NFTs</Text>
       <Text textType="regular">
-        Kusama Kings is one of the most successful NFT projects in the Kusama ecosystem, and now it is time for the Kusama Queens to make their entrance. Owning a Kusama Queen comes with access to a private discord The Great Hall,
-        opportunities to invest in pre-sales through KingPad and the chance to create a Royal Baby NFT.
-        There will only ever be 110 Queens (60 Limited, 25 Rare, 15 Ultra Rare and 10 Legendary).  All Queens are hand-drawn and unique.  Pledge your allegiance to the Kingdom and start your reign today!
-        The Kusama Kings mint is now finished, but Kings can still be purchased from the secondary marketplace.
+        ⚠️ This website is a work in progress, is expected to reach its first stable form at the end of June 2022
       </Text>
+      <Text>
+        Powered by Antonio Guiotto
+      </Text>
+      <Text textType='tooltip'>
+        powerydratoni@gmail.com
+      </Text>
+       
     </div>
   );
 }

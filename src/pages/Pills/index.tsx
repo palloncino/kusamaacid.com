@@ -13,6 +13,8 @@ export default function Pills() {
 
   const [whoIsLoading, setWhoIsLoading] = useState<string | undefined>(undefined);
 
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(false);
+
   const renderNftVideo = (pill: string) => {
     return (
       <>
@@ -34,13 +36,14 @@ export default function Pills() {
           autoPlay
           onLoadStart={() => setWhoIsLoading(pill)}
           onLoadedData={() => setWhoIsLoading(undefined)}
-          onPause={() => console.log(1.1)}
+          onPause={() => setCurrentlyPlaying(false)}
+          onPlay={() => setCurrentlyPlaying(true)}
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
         <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={pill === whoIsLoading}
+          open={pill === whoIsLoading && currentlyPlaying}
         >
           <Spinner type={1} />
         </Backdrop>

@@ -17,20 +17,65 @@
     }
   ],
   "pills": [
-    "ANGEL",
-    "BOB MARLEY",
-    "BULL",
-    "CAR",
-    "DEVIL",
-    "DRAGON",
-    "GORILLA",
-    "KING",
-    "KITTY",
-    "NINJA",
-    "PACMAN",
-    "PENGUIN",
-    "POKEMON",
-    "TRUMP",
-    "VIOLET BUTTERFLY"
+    {
+      "id": "ANGEL",
+      "class": "unique"
+    },
+    {
+      "id": "BOB_MARLEY",
+      "class": "unique"
+    },
+    {
+      "id": "BULL",
+      "class": "unique"
+    },
+    {
+      "id": "CAR",
+      "class": "unique"
+    },
+    {
+      "id": "DEVIL",
+      "class": "unique"
+    },
+    {
+      "id": "DRAGON",
+      "class": "unique"
+    },
+    {
+      "id": "GORILLA",
+      "class": "unique"
+    },
+    {
+      "id": "KING",
+      "class": "unique"
+    },
+    {
+      "id": "KITTY",
+      "class": "unique"
+    },
+    {
+      "id": "NINJA",
+      "class": "unique"
+    },
+    {
+      "id": "PACMAN",
+      "class": "unique"
+    },
+    {
+      "id": "PENGUIN",
+      "class": "unique"
+    },
+    {
+      "id": "POKEMON",
+      "class": "unique"
+    },
+    {
+      "id": "TRUMP",
+      "class": "unique"
+    },
+    {
+      "id": "VIOLET_BUTTERFLY",
+      "class": "unique"
+    }
   ]
 }

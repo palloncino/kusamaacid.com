@@ -55,23 +55,23 @@ export default function Pills() {
         width="100%"
         height="100%"
         onClick={() => setActiveNft(pill)}
-        src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${'ANGEL'}-thumbnail.png`}
+        src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${'ANGEL'}.png`}
         alt={`${pill} PILL NFT`} />
     );
   };
 
   return (
     <div className="nft-wrapper">
-      {pills.map(pill => {
+      {pills.map(({id}) => {
         return (
-          <Card key={pill}>
+          <Card key={id}>
             <CardActionArea>
-              {pill === activeNft ? renderNftVideo(pill) : renderThumbnail(pill)}
+              {id === activeNft ? renderNftVideo(id) : renderThumbnail(id)}
             </CardActionArea>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
 
               <CardContent>
-                {pill}
+                {id}
               </CardContent>
               <CardActions>
                 <Button size="small" color="secondary">

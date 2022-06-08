@@ -1,5 +1,6 @@
 .navbar-wrapper {
     width: 100%;
+    background-color: var(--lgtblue);
 }
 
 .navbar-container {
@@ -8,12 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: orange;
+    background-color: var(--lgtblue);
+    font-family: var(--paragraph);
+    font-weight: 600;
 }
 
-@media only screen and (min-width: 768px) {
+.navbar-container .text-link:hover {
+    color: var(--magenta);
+    cursor: pointer;
+}
+
+/*@media only screen and (min-width: 768px) {
     
     .navbar-container {
-        background-color: red;
     }
-}
+}*/

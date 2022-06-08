@@ -7,3 +7,7 @@
 .spinner.spinner-large {
     font-size: 2rem;    
 }
+
+.spinner {
+    color: white;
+}

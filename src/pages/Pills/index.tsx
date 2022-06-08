@@ -1,4 +1,5 @@
 import { Backdrop, Button, Card, CardActionArea, CardActions, CardContent } from '@mui/material';
+import { yellow } from '@mui/material/colors';
 import { useState } from 'react';
 import { Spinner } from '../../components/Spinner';
 import json from '../../settings.json';
@@ -55,27 +56,30 @@ export default function Pills() {
         width="100%"
         height="100%"
         onClick={() => setActiveNft(pill)}
-        src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${'ANGEL'}.png`}
+        src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${pill}.png`}
         alt={`${pill} PILL NFT`} />
     );
   };
 
   return (
     <div className="nft-wrapper">
-      {pills.map(({id}) => {
+      {pills.map(({ id, classification, label }) => {
         return (
           <Card key={id}>
             <CardActionArea>
               {id === activeNft ? renderNftVideo(id) : renderThumbnail(id)}
             </CardActionArea>
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
               <CardContent>
-                {id}
+                <div style={{ position: 'relative' }}>
+                  <span style={{ position: 'absolute', background: 'yellow', top: '-2.4rem', padding: '.2rem .4rem' }}>{classification}</span>
+                  {label}
+                </div>
               </CardContent>
               <CardActions>
                 <Button size="small" color="secondary">
-                on Singular
+                  on Singular
                 </Button>
               </CardActions>
             </div>

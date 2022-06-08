@@ -19,63 +19,78 @@
   "pills": [
     {
       "id": "ANGEL",
-      "class": "unique"
+      "label": "Acid Angel",
+      "classification": "legendary"
     },
     {
       "id": "BOB_MARLEY",
-      "class": "unique"
+      "label": "Acid Bob Marley",
+      "classification": "legendary"
     },
     {
       "id": "BULL",
-      "class": "unique"
+      "label": "Acid Bull",
+      "classification": "limited"
     },
     {
-      "id": "CAR",
-      "class": "unique"
+      "id": "MITSUBISHI",
+      "label": "Acid Mitsubishi",
+      "classification": "limited"
     },
     {
       "id": "DEVIL",
-      "class": "unique"
+      "label": "Acid Devil",
+      "classification": "legendary"
     },
     {
       "id": "DRAGON",
-      "class": "unique"
+      "label": "Acid Dragon",
+      "classification": "unique"
     },
     {
       "id": "GORILLA",
-      "class": "unique"
+      "label": "Acid Gorilla",
+      "classification": "unique"
     },
     {
       "id": "KING",
-      "class": "unique"
+      "label": "Acid King",
+      "classification": "unique"
     },
     {
       "id": "KITTY",
-      "class": "unique"
+      "label": "Acid Kitty",
+      "classification": "unique"
     },
     {
       "id": "NINJA",
-      "class": "unique"
+      "label": "Acid Ninja",
+      "classification": "unique"
     },
     {
       "id": "PACMAN",
-      "class": "unique"
+      "label": "Acid Pacman",
+      "classification": "legendary"
     },
     {
       "id": "PENGUIN",
-      "class": "unique"
+      "label": "Acid Penguin",
+      "classification": "legendary"
     },
     {
       "id": "POKEMON",
-      "class": "unique"
+      "label": "Acid Pokémon",
+      "classification": "limited"
     },
     {
       "id": "TRUMP",
-      "class": "unique"
+      "label": "Acid Trump",
+      "classification": "legendary"
     },
     {
-      "id": "VIOLET_BUTTERFLY",
-      "class": "unique"
+      "id": "BUTTERFLY_VIOLET",
+      "label": "Acid Violet Butterfly",
+      "classification": "limited"
     }
   ]
 }

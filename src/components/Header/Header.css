@@ -11,7 +11,7 @@
 }
 
 .header-container {
-    background: url('https://kusama-acid-media.s3.amazonaws.com/banners/kusama-acid-pills-banner-static-1.jpg'), black; /* TODO */
+    background: url('https://kusama-acid-media.s3.amazonaws.com/banners/kusama-acid-pills-banner-static-1-narrow-short.png'), black; /* TODO */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

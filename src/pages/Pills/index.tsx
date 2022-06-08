@@ -1,5 +1,4 @@
 import { Backdrop, Button, Card, CardActionArea, CardActions, CardContent } from '@mui/material';
-import { yellow } from '@mui/material/colors';
 import { useState } from 'react';
 import { Spinner } from '../../components/Spinner';
 import json from '../../settings.json';

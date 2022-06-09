@@ -1,0 +1,28 @@
+.NFT .MuiTabPanel-root {
+  padding: 0;
+}
+
+.NFT .MuiTabs-root {
+  height: 2rem;
+  min-height: 1rem;
+}
+
+.NFT .MuiTabs-flexContainer {
+  height: 100%;
+  min-height: 1rem;
+}
+
+.NFT .MuiButtonBase-root {
+  height: 100%;
+  min-height: 1rem;
+  color: white;
+}
+
+.NFT .MuiButtonBase-root.Mui-selected {
+  background: #E03286;
+  color: #000;
+}
+
+.NFT .MuiTabs-indicator {
+  background: #E03286;
+}

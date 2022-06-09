@@ -1,8 +1,20 @@
-import { Tab, Backdrop } from '@mui/material';
-import { Spinner, Text } from '../../components';
+import { Tab } from '@mui/material';
+import { Text } from '../../components';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useState } from 'react';
 import './NFT.css';
+
+interface INFTProps {
+  id: string;
+  classification: string;
+  label: string;
+  setActiveNft: (id: string | undefined) => void;
+  activeNft: string | undefined;
+  setWhoIsLoading: (id: string | undefined) => void;
+  whoIsLoading: string | undefined;
+  setCurrentlyPlaying: (value: boolean) => void;
+  currentlyPlaying: boolean;
+}
 
 export const NFT = ({
   id,
@@ -14,7 +26,13 @@ export const NFT = ({
   whoIsLoading,
   setCurrentlyPlaying,
   currentlyPlaying,
-}: any) => {
+}: INFTProps) => {
+
+  const [value, setValue] = useState('img');
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
 
   const renderNftVideo = (pill: string) => {
     return (
@@ -42,12 +60,6 @@ export const NFT = ({
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
-        <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={pill === whoIsLoading && currentlyPlaying}
-        >
-          <Spinner type={1} />
-        </Backdrop>
       </>
     );
   };
@@ -63,12 +75,6 @@ export const NFT = ({
         src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
         alt={`${id} PILL NFT`} />
     );
-  };
-
-  const [value, setValue] = useState('img');
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
   };
 
   return (

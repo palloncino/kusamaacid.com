@@ -15,9 +15,6 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
       case 'home':
         return 'Home';
 
-      case 'roadmap':
-        return 'Roadmap';
-
       case 'pills':
         return 'Pills';
 

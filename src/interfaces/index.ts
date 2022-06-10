@@ -1,4 +1,4 @@
-export type ViewType = 'home' | 'roadmap' | 'pills' | 'faqs' | 'contacts'
+export type ViewType = 'home' | 'pills';
 
 export interface IComponentFrame {
     view: ViewType;

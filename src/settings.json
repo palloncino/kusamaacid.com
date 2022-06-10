@@ -6,11 +6,6 @@
       "path": "/"
     },
     {
-      "name": "roadmap",
-      "label": "Roadmap",
-      "path": "/roadmap"
-    },
-    {
       "name": "pills",
       "label": "Pills",
       "path": "/pills"

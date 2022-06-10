@@ -7,10 +7,6 @@ const lazyComponent = (name: string) => {
       Component = lazy(() => import('../pages/Home'));
       return Component;
 
-    case 'roadmap':
-      Component = lazy(() => import('../pages/Roadmap'));
-      return Component;
-
     default:
       Component = lazy(() => import('../pages/Home'));
       return Component;

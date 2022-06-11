@@ -1,5 +1,5 @@
 import { Tab } from '@mui/material';
-import { Text } from '../../components';
+import { Text, Spinner } from '../../components';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useState } from 'react';
 import './NFT.css';
@@ -8,27 +8,17 @@ interface INFTProps {
   id: string;
   classification: string;
   label: string;
-  setActiveNft: (id: string | undefined) => void;
-  activeNft: string | undefined;
-  setWhoIsLoading: (id: string | undefined) => void;
-  whoIsLoading: string | undefined;
-  setCurrentlyPlaying: (value: boolean) => void;
-  currentlyPlaying: boolean;
 }
 
 export const NFT = ({
   id,
   classification,
   label,
-  setActiveNft,
-  activeNft,
-  setWhoIsLoading,
-  whoIsLoading,
-  setCurrentlyPlaying,
-  currentlyPlaying,
 }: INFTProps) => {
 
   const [value, setValue] = useState('img');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -43,35 +33,29 @@ export const NFT = ({
           id={pill}
           width="100%"
           playsInline
-          onClick={(e) => {
-            if (activeNft === pill) {
-              setActiveNft(undefined);
-              return (e.target as any).pause(); // eslint-disable-line @typescript-eslint/no-explicit-any
-            }
-            document.querySelectorAll('video').forEach(vid => vid.pause());
-            setActiveNft(pill);
-            (e.target as any).play(); // eslint-disable-line @typescript-eslint/no-explicit-any
-          }}
           autoPlay
-          onLoadStart={() => setWhoIsLoading(pill)}
-          onLoadedData={() => setWhoIsLoading(undefined)}
-          onPause={() => setCurrentlyPlaying(false)}
-          onPlay={() => setCurrentlyPlaying(true)}
+          loop
+          onLoadStart={() => setIsLoading(true)}
+          onLoadedData={() => setIsLoading(false)}
+          onPlay={() => setIsPlaying(true)}
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
+        {isLoading && <Spinner />}
       </>
     );
   };
 
   const renderThumbnail = (id: string) => {
+    if (isPlaying) {
+      setIsPlaying(false);
+    }
     return (
       <img
         className={`${id}-NFT-img NFT`}
         key={id}
         width="100%"
         height="100%"
-        onClick={() => setActiveNft(id)}
         src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
         alt={`${id} PILL NFT`} />
     );

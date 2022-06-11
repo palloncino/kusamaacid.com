@@ -1,4 +1,4 @@
-import { Tab } from '@mui/material';
+import { Dialog, Tab } from '@mui/material';
 import { Text, Spinner } from '../../components';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useState } from 'react';
@@ -19,6 +19,8 @@ export const NFT = ({
   const [value, setValue] = useState('img');
   const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [open, setOpen] = useState(false);
+  
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -51,13 +53,29 @@ export const NFT = ({
       setIsPlaying(false);
     }
     return (
-      <img
-        className={`${id}-NFT-img NFT`}
-        key={id}
-        width="100%"
-        height="100%"
-        src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
-        alt={`${id} PILL NFT`} />
+      <>
+        <img
+          className={`${id}-NFT-img NFT`}
+          key={id}
+          width="100%"
+          height="100%"
+          src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
+          alt={`${id} PILL NFT`} 
+          onClick={() => setOpen(true)}/>
+        <Dialog
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <img
+            className={`${id}-NFT-img NFT`}
+            key={id}
+            width="100%"
+            height="100%"
+            src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
+            alt={`${id} PILL NFT`} />
+        </Dialog>
+      </>
     );
   };
 

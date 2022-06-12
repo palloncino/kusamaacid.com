@@ -41,7 +41,7 @@ export const NFT = ({
 
   const handleIsVideoPlaying = () => setIsPlaying(true);
 
-  const handleVideoOnError = () => setErrorMessage('Sorry, this video is not available at this time.');
+  const handleVideoOnError = () => setErrorMessage('Sorry, the video is not available at this time.');
 
   const renderNftVideo = (pill: string) => {
     return (

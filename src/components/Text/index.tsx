@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import './Text.css';
 
 enum EnumTextType {
@@ -12,9 +12,10 @@ enum EnumTextType {
 interface ITextProps {
   children?: ReactNode;
   textType?: string;
+  customStyle?: CSSProperties;
 }
 
-export const Text = ({ children, textType }: ITextProps) => {
+export const Text = ({ children, textType, customStyle }: ITextProps) => {
 
   function getOutput(type: string) {
 
@@ -22,31 +23,31 @@ export const Text = ({ children, textType }: ITextProps) => {
 
     switch (type) {
       case EnumTextType.h1:
-        output = <h1 className={`text text-${type}`}>{children}</h1>;
+        output = <h1 style={customStyle} className={`text text-${type}`}>{children}</h1>;
         break;
 
       case EnumTextType.h3:
-        output = <h3 className={`text text-${type}`}>{children}</h3>;
+        output = <h3 style={customStyle} className={`text text-${type}`}>{children}</h3>;
         break;
 
       case EnumTextType.h4:
-        output = <h4 className={`text text-${type}`}>{children}</h4>;
+        output = <h4 style={customStyle} className={`text text-${type}`}>{children}</h4>;
         break;
 
       case EnumTextType.regular:
-        output = <p className={`text text-${type}`}>{children}</p>;
+        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
         break;
 
       case EnumTextType.small:
-        output = <p className={`text text-${type}`}>{children}</p>;
+        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
         break;
 
       case EnumTextType.tooltip:
-        output = <p className={`text text-${type}`}>{children}</p>;
+        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
         break;
 
       default:
-        output = <p className={'text-regular'}>{children}</p>;
+        output = <p style={customStyle} className={'text-regular'}>{children}</p>;
         break;
     }
 

@@ -1,11 +1,13 @@
 kusamaacid.com
 
-
-TODO: 
+🛠 TODO: 
 
 - pagination for nft page
-- open full screen Dialog with image and info only for >= laptop view
 
+🐛 BUGS:
+
+- video element wont change state to isPlaying when start playing, this prevent click on video to stop / resume
+- use clear timeout when switching to img tab to prevent unwanted behaviour video onError
 
 
 

@@ -1,7 +1,7 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, Tab } from '@mui/material';
 import { MouseEvent, SyntheticEvent, useState } from 'react';
-import { Spinner, Text } from '../../components';
+import { Text } from '../../components';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import NftPlaceholder from './loading.gif';
 import './NFT.css';
@@ -54,9 +54,13 @@ export const NFT = ({
           className={`${pill}-NFT-mp4 NFT`}
           key={pill}
           id={pill}
-          width="100%"
-          max-height="100%"
-          height="auto"
+          style={!isNftVideoLoading ? {
+            width: '100%',
+            maxHeight: '100%',
+            height: 'auto',
+          } : { 
+            height: '0px' 
+          }}
           playsInline
           autoPlay
           loop
@@ -68,7 +72,15 @@ export const NFT = ({
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
-        {isNftVideoLoading && <Spinner />}
+        {isNftVideoLoading && (
+          <img
+            key={id}
+            width="100%"
+            max-height="100%"
+            height="auto"
+            style={{ opacity: 0.2 }}
+            src={NftPlaceholder} />
+        )}
       </>
     );
   };
@@ -131,8 +143,8 @@ export const NFT = ({
         <TabPanel value="img">
           {renderNftImage(id)}
         </TabPanel>
-        <TabPanel value="mp4">
-          <Text>
+        <TabPanel value="mp4" style={{ position: 'relative' }}>
+          <Text customStyle={{ position: 'absolute', padding: '1rem' }}>
             {errorMessage && errorMessage}
           </Text>
           {renderNftVideo(id)}

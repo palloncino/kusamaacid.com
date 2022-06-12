@@ -60,7 +60,7 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           onLoad={() => setIsNftImgLoaded(true)}
           className={`${id}-NFT-img NFT`}
           style={isNftImgLoaded ? naturalHeight : flatHeight}
-          src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
+          src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}-small.png`}
           loading="lazy"
           alt={`${id} PILL NFT`}
           onClick={handleClickNftImg} />

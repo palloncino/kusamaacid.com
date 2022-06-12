@@ -1,13 +1,6 @@
 import { LinearProgress, CircularProgress } from '@mui/material';
+import { ISpinner } from '../../interfaces';
 import './Spinner.css';
-
-interface ISpinner {
-  size?: 'small' | 'regular' | 'large';
-  noPadding?: boolean;
-  noMargin?: boolean;
-  type?: 1 | 2;
-  color?: 'primary' | 'secondary';
-}
 
 export const Spinner = ({ color = 'secondary', size = 'regular', noPadding, noMargin, type = 2 }: ISpinner) => {
 

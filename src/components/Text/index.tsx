@@ -1,4 +1,5 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import { ITextProps } from '../../interfaces';
 import './Text.css';
 
 enum EnumTextType {
@@ -8,11 +9,6 @@ enum EnumTextType {
   regular = 'regular',
   small = 'small',
   tooltip = 'tooltip',
-}
-interface ITextProps {
-  children?: ReactNode;
-  textType?: string;
-  customStyle?: CSSProperties;
 }
 
 export const Text = ({ children, textType, customStyle }: ITextProps) => {

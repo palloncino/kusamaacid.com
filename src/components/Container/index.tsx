@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import './Container.css';
-
-interface IContainerProps {
-  children?: ReactNode;
-}
+import { IContainerProps } from '../../interfaces';
 
 export const Container = ({ children }: IContainerProps) => {
   return (

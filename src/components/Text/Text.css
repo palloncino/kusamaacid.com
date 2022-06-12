@@ -5,7 +5,7 @@ div, h1, h2, h3, h4, h5, h6, p, ul, li, span {
 
 @font-face {
     font-family: CustomFont;
-    src: url(../../fonts/Saira-Regular.ttf);
+    src: url(../../assets/fonts/Saira-Regular.ttf);
 }
 
 .navbar-link {

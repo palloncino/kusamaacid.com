@@ -3,7 +3,7 @@ import { Dialog, Tab } from '@mui/material';
 import { MouseEvent, SyntheticEvent, useState } from 'react';
 import { Text } from '../../components';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
-import NftPlaceholder from './loading.gif';
+import NftPlaceholder from '../../assets/media/loading.gif';
 import './NFT.css';
 
 interface INFTProps {
@@ -52,7 +52,6 @@ export const NFT = ({
       <>
         <video
           className={`${pill}-NFT-mp4 NFT`}
-          key={pill}
           id={pill}
           style={!isNftVideoLoading ? {
             width: '100%',
@@ -74,7 +73,6 @@ export const NFT = ({
         </video>
         {isNftVideoLoading && (
           <img
-            key={id}
             width="100%"
             max-height="100%"
             height="auto"
@@ -95,7 +93,6 @@ export const NFT = ({
         <img
           onLoad={() => setIsNftImgLoaded(true)}
           className={`${id}-NFT-img NFT`}
-          key={id}
           style={isNftImgLoaded ? {
             width: '100%',
             maxHeight: '100%',
@@ -109,7 +106,6 @@ export const NFT = ({
           onClick={handleClickNftImg} />
         {!isNftImgLoaded && (
           <img
-            key={id}
             width="100%"
             max-height="100%"
             height="auto"
@@ -123,7 +119,6 @@ export const NFT = ({
         >
           <img
             className={`${id}-NFT-img NFT`}
-            key={id}
             width="100%"
             height="100%"
             src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
@@ -134,7 +129,7 @@ export const NFT = ({
   };
 
   return (
-    <div className="NFT" key={id} style={{ width: '100%' }}>
+    <div className="NFT">
       <TabContext value={activeTab}>
         <TabList onChange={handleChange} aria-label="lab API tabs example">
           <Tab label="IMG" value="img" />

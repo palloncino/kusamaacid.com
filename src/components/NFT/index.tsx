@@ -69,7 +69,7 @@ export const NFT = ({
           onClick={handleClickOnVideo}
           onError={handleVideoOnError}
         >
-          <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
+          <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}.mp4`} type="video/mp4" />
         </video>
         {isNftVideoLoading && (
           <img

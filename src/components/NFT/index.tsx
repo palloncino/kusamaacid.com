@@ -1,18 +1,13 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, Tab } from '@mui/material';
 import { CSSProperties, MouseEvent, SyntheticEvent, useState } from 'react';
+import NftPlaceholderGif from '../../assets/media/loading.gif';
 import { Text } from '../../components';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
-import NftPlaceholderGif from '../../assets/media/loading.gif';
-import './NFT.css';
 import { INFTProps } from '../../interfaces';
+import './NFT.css';
 
-export const NFT = ({
-  id,
-  classification,
-  label,
-}: INFTProps) => {
-
+export const NFT = ({ id, classification, label }: INFTProps) => {
   const [activeTab, setActiveTab] = useState('img');
   const [isNftVideoLoading, setIsNftVideoLoading] = useState(false);
   const [isNftImgLoaded, setIsNftImgLoaded] = useState(false);
@@ -47,32 +42,6 @@ export const NFT = ({
   const handleVideoOnError = () => setNftVideoErrorMessage('Sorry, the video is not available at this time.');
 
   const handleClickNftImg = () => !isMobile && setOpenDialog(true);
-
-  const renderNftVideo = (pill: string) => {
-    return (
-      <>
-        <video
-          className={`${pill}-NFT-mp4 NFT`}
-          style={!isNftVideoLoading ? naturalHeight : flatHeight}
-          playsInline
-          autoPlay
-          loop
-          onLoadStart={() => handleNftVideoLoading(true)}
-          onLoadedData={() => handleNftVideoLoading(false)}
-          onPlaying={handleIsVideoPlaying}
-          onClick={handleClickOnVideo}
-          onError={handleVideoOnError}
-        >
-          <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}.mp4`} type="video/mp4" />
-        </video>
-        {isNftVideoLoading && (
-          <img
-            style={{ ...naturalHeight, opacity: 0.2 }}
-            src={NftPlaceholderGif} />
-        )}
-      </>
-    );
-  };
 
   const renderNftImage = (id: string) => {
     if (nftImgErrorMessage) {
@@ -110,6 +79,32 @@ export const NFT = ({
             src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
             alt={`${id} PILL NFT`} />
         </Dialog>
+      </>
+    );
+  };
+
+  const renderNftVideo = (pill: string) => {
+    return (
+      <>
+        <video
+          className={`${pill}-NFT-mp4 NFT`}
+          style={!isNftVideoLoading ? naturalHeight : flatHeight}
+          playsInline
+          autoPlay
+          loop
+          onLoadStart={() => handleNftVideoLoading(true)}
+          onLoadedData={() => handleNftVideoLoading(false)}
+          onPlaying={handleIsVideoPlaying}
+          onClick={handleClickOnVideo}
+          onError={handleVideoOnError}
+        >
+          <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}.mp4`} type="video/mp4" />
+        </video>
+        {isNftVideoLoading && (
+          <img
+            style={{ ...naturalHeight, opacity: 0.2 }}
+            src={NftPlaceholderGif} />
+        )}
       </>
     );
   };

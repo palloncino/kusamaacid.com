@@ -24,7 +24,8 @@ export const NFT = ({
 
   const naturalHeight = { width: '100%', maxHeight: '100%', height: 'auto' };
   const flatHeight = { height: '0px' };
-  const absoluteErrorMessageStyle: CSSProperties = { position: 'absolute', padding: '1rem' };
+  const errorMessageStyle: CSSProperties = { position: 'absolute', padding: '1rem' };
+  const mrRelative: CSSProperties = { position: 'relative' };
 
   const handleChange = (event: SyntheticEvent, newValue: string) => setActiveTab(newValue);
 
@@ -66,10 +67,7 @@ export const NFT = ({
         </video>
         {isNftVideoLoading && (
           <img
-            width="100%"
-            max-height="100%"
-            height="auto"
-            style={{ opacity: 0.2 }}
+            style={{ ...naturalHeight, opacity: 0.2 }}
             src={NftPlaceholderGif} />
         )}
       </>
@@ -81,10 +79,7 @@ export const NFT = ({
       return (
         <>
           <img
-            width="100%"
-            max-height="100%"
-            height="auto"
-            style={{ opacity: 0.2 }}
+            style={{ ...naturalHeight, opacity: 0.2 }}
             src={NftPlaceholderGif} />
         </>
       );
@@ -102,10 +97,7 @@ export const NFT = ({
           onClick={handleClickNftImg} />
         {!isNftImgLoaded && (
           <img
-            width="100%"
-            max-height="100%"
-            height="auto"
-            style={{ opacity: 0.2 }}
+            style={{ ...naturalHeight, opacity: 0.2 }}
             src={NftPlaceholderGif} />
         )}
         <Dialog
@@ -130,13 +122,13 @@ export const NFT = ({
           <Tab label="VIDEO" value="mp4" />
         </TabList>
         <TabPanel value="img">
-          <Text customStyle={absoluteErrorMessageStyle}>
+          <Text customStyle={errorMessageStyle}>
             {nftImgErrorMessage && nftImgErrorMessage}
           </Text>
           {renderNftImage(id)}
         </TabPanel>
-        <TabPanel value="mp4" style={{ position: 'relative' }}>
-          <Text customStyle={absoluteErrorMessageStyle}>
+        <TabPanel value="mp4" style={mrRelative}>
+          <Text customStyle={errorMessageStyle}>
             {nftVideoErrorMessage && nftVideoErrorMessage}
           </Text>
           {renderNftVideo(id)}

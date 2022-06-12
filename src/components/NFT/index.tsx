@@ -1,7 +1,7 @@
-import { Dialog, Tab } from '@mui/material';
-import { Text, Spinner } from '../../components';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { useState, SyntheticEvent, useEffect } from 'react';
+import { Dialog, Tab } from '@mui/material';
+import { MouseEvent, SyntheticEvent, useState } from 'react';
+import { Spinner, Text } from '../../components';
 import './NFT.css';
 
 interface INFTProps {
@@ -20,16 +20,28 @@ export const NFT = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
-  const [open, setOpen] = useState(false);
-  
+  const [openDialog, setOpenDialog] = useState(false);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setActiveTab(newValue);
+  const handleChange = (event: SyntheticEvent, newValue: string) => setActiveTab(newValue);
+
+  const handleClickOnVideo = (e: MouseEvent<HTMLVideoElement>) => {
+    const player = e.target as HTMLVideoElement;
+    if (isPlaying) {
+      player.pause();
+      setIsPlaying(false);
+    } else {
+      player.play();
+      setIsPlaying(true);
+    }
   };
 
-  useEffect(() => {
-    console.log(isPlaying);
-  }, [isPlaying]);
+  const handleOnVideoLoaded = () => setIsLoading(false);
+
+  const handleOnVideoStartLoading = () => setIsLoading(true);
+
+  const handleIsVideoPlaying = () => setIsPlaying(true);
+
+  const handleVideoOnError = () => setErrorMessage('Sorry, this video is not available at this time.');
 
   const renderNftVideo = (pill: string) => {
     return (
@@ -44,22 +56,11 @@ export const NFT = ({
           playsInline
           autoPlay
           loop
-          onLoadStart={() => setIsLoading(true)}
-          onLoadedData={() => setIsLoading(false)}
-          onPlaying={() => setIsPlaying(true)}
-          onClick={(e) => {
-            const player = e.target as HTMLVideoElement;
-            isPlaying ? player.pause() : player.play();
-          }}
-          onError={(e: SyntheticEvent) => {
-            if (e.type === 'error') {
-              setTimeout(() => {
-                handleChange(undefined as any, 'img');
-                setErrorMessage(undefined);
-              }, 10000);
-              setErrorMessage('Sorry, this video is not available at this time :/');
-            }
-          }}
+          onLoadStart={handleOnVideoStartLoading}
+          onLoadedData={handleOnVideoLoaded}
+          onPlaying={handleIsVideoPlaying}
+          onClick={handleClickOnVideo}
+          onError={handleVideoOnError}
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
@@ -68,10 +69,7 @@ export const NFT = ({
     );
   };
 
-  const renderThumbnail = (id: string) => {
-    if (isPlaying) {
-      setIsPlaying(false);
-    }
+  const renderNftImage = (id: string) => {
     return (
       <>
         <img
@@ -81,11 +79,11 @@ export const NFT = ({
           max-height="100%"
           height="auto"
           src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
-          alt={`${id} PILL NFT`} 
-          onClick={() => setOpen(true)}/>
+          alt={`${id} PILL NFT`}
+          onClick={() => setOpenDialog(true)} />
         <Dialog
-          open={open}
-          onClose={() => setOpen(false)}
+          open={openDialog}
+          onClose={() => setOpenDialog(false)}
           aria-labelledby="responsive-dialog-title"
         >
           <img
@@ -108,7 +106,7 @@ export const NFT = ({
           <Tab label="VIDEO" value="mp4" />
         </TabList>
         <TabPanel value="img">
-          {renderThumbnail(id)}
+          {renderNftImage(id)}
         </TabPanel>
         <TabPanel value="mp4">
           <Text>

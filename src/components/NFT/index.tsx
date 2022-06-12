@@ -2,6 +2,8 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, Tab } from '@mui/material';
 import { MouseEvent, SyntheticEvent, useState } from 'react';
 import { Spinner, Text } from '../../components';
+import { useWhatDevice } from '../../hooks/useWhatDevice';
+import NftPlaceholder from './loading.gif';
 import './NFT.css';
 
 interface INFTProps {
@@ -17,29 +19,31 @@ export const NFT = ({
 }: INFTProps) => {
 
   const [activeTab, setActiveTab] = useState('img');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isNftVideoLoading, setIsNftVideoLoading] = useState(false);
+  const [isNftImgLoaded, setIsNftImgLoaded] = useState(false);
+  const [isNftVideoPlaying, setIsNftVideoPlaying] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [openDialog, setOpenDialog] = useState(false);
+  const { isMobile } = useWhatDevice();
+
+  // VIDEO
 
   const handleChange = (event: SyntheticEvent, newValue: string) => setActiveTab(newValue);
 
   const handleClickOnVideo = (e: MouseEvent<HTMLVideoElement>) => {
     const player = e.target as HTMLVideoElement;
-    if (isPlaying) {
+    if (isNftVideoPlaying) {
       player.pause();
-      setIsPlaying(false);
+      setIsNftVideoPlaying(false);
     } else {
       player.play();
-      setIsPlaying(true);
+      setIsNftVideoPlaying(true);
     }
   };
 
-  const handleOnVideoLoaded = () => setIsLoading(false);
+  const handleNftVideoLoading = (value: boolean) => setIsNftVideoLoading(value);
 
-  const handleOnVideoStartLoading = () => setIsLoading(true);
-
-  const handleIsVideoPlaying = () => setIsPlaying(true);
+  const handleIsVideoPlaying = () => setIsNftVideoPlaying(true);
 
   const handleVideoOnError = () => setErrorMessage('Sorry, the video is not available at this time.');
 
@@ -56,31 +60,50 @@ export const NFT = ({
           playsInline
           autoPlay
           loop
-          onLoadStart={handleOnVideoStartLoading}
-          onLoadedData={handleOnVideoLoaded}
+          onLoadStart={() => handleNftVideoLoading(true)}
+          onLoadedData={() => handleNftVideoLoading(false)}
           onPlaying={handleIsVideoPlaying}
           onClick={handleClickOnVideo}
           onError={handleVideoOnError}
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}+PILL.mp4`} type="video/mp4" />
         </video>
-        {isLoading && <Spinner />}
+        {isNftVideoLoading && <Spinner />}
       </>
     );
   };
+
+  // IMG
+
+  const handleClickNftImg = () => !isMobile && setOpenDialog(true);
 
   const renderNftImage = (id: string) => {
     return (
       <>
         <img
+          onLoad={() => setIsNftImgLoaded(true)}
           className={`${id}-NFT-img NFT`}
           key={id}
-          width="100%"
-          max-height="100%"
-          height="auto"
+          style={isNftImgLoaded ? {
+            width: '100%',
+            maxHeight: '100%',
+            height: 'auto',
+          } : { 
+            height: '0px' 
+          }}
           src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
+          loading="lazy"
           alt={`${id} PILL NFT`}
-          onClick={() => setOpenDialog(true)} />
+          onClick={handleClickNftImg} />
+        {!isNftImgLoaded && (
+          <img
+            key={id}
+            width="100%"
+            max-height="100%"
+            height="auto"
+            style={{ opacity: 0.2 }}
+            src={NftPlaceholder} />
+        )}
         <Dialog
           open={openDialog}
           onClose={() => setOpenDialog(false)}

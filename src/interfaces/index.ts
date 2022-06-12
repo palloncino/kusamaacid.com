@@ -43,3 +43,9 @@ export interface INftVideo {
 export interface INftImg {
     id: string;
 }
+
+export interface INFTProps {
+    id: string;
+    classification: string;
+    label: string;
+}

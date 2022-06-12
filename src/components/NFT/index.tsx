@@ -1,16 +1,11 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, Tab } from '@mui/material';
-import { MouseEvent, SyntheticEvent, useState } from 'react';
+import { CSSProperties, MouseEvent, SyntheticEvent, useState } from 'react';
 import { Text } from '../../components';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
-import NftPlaceholder from '../../assets/media/loading.gif';
+import NftPlaceholderGif from '../../assets/media/loading.gif';
 import './NFT.css';
-
-interface INFTProps {
-  id: string;
-  classification: string;
-  label: string;
-}
+import { INFTProps } from '../../interfaces';
 
 export const NFT = ({
   id,
@@ -22,11 +17,14 @@ export const NFT = ({
   const [isNftVideoLoading, setIsNftVideoLoading] = useState(false);
   const [isNftImgLoaded, setIsNftImgLoaded] = useState(false);
   const [isNftVideoPlaying, setIsNftVideoPlaying] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const [nftVideoErrorMessage, setNftVideoErrorMessage] = useState<string | undefined>(undefined);
+  const [nftImgErrorMessage, setNftImgErrorMessage] = useState<string | undefined>(undefined);
   const [openDialog, setOpenDialog] = useState(false);
   const { isMobile } = useWhatDevice();
 
-  // VIDEO
+  const naturalHeight = { width: '100%', maxHeight: '100%', height: 'auto' };
+  const flatHeight = { height: '0px' };
+  const absoluteErrorMessageStyle: CSSProperties = { position: 'absolute', padding: '1rem' };
 
   const handleChange = (event: SyntheticEvent, newValue: string) => setActiveTab(newValue);
 
@@ -45,21 +43,16 @@ export const NFT = ({
 
   const handleIsVideoPlaying = () => setIsNftVideoPlaying(true);
 
-  const handleVideoOnError = () => setErrorMessage('Sorry, the video is not available at this time.');
+  const handleVideoOnError = () => setNftVideoErrorMessage('Sorry, the video is not available at this time.');
+
+  const handleClickNftImg = () => !isMobile && setOpenDialog(true);
 
   const renderNftVideo = (pill: string) => {
     return (
       <>
         <video
           className={`${pill}-NFT-mp4 NFT`}
-          id={pill}
-          style={!isNftVideoLoading ? {
-            width: '100%',
-            maxHeight: '100%',
-            height: 'auto',
-          } : { 
-            height: '0px' 
-          }}
+          style={!isNftVideoLoading ? naturalHeight : flatHeight}
           playsInline
           autoPlay
           loop
@@ -77,29 +70,32 @@ export const NFT = ({
             max-height="100%"
             height="auto"
             style={{ opacity: 0.2 }}
-            src={NftPlaceholder} />
+            src={NftPlaceholderGif} />
         )}
       </>
     );
   };
 
-  // IMG
-
-  const handleClickNftImg = () => !isMobile && setOpenDialog(true);
-
   const renderNftImage = (id: string) => {
+    if (nftImgErrorMessage) {
+      return (
+        <>
+          <img
+            width="100%"
+            max-height="100%"
+            height="auto"
+            style={{ opacity: 0.2 }}
+            src={NftPlaceholderGif} />
+        </>
+      );
+    }
     return (
       <>
         <img
+          onError={() => setNftImgErrorMessage('Sorry, this NFT is not available at this time.')}
           onLoad={() => setIsNftImgLoaded(true)}
           className={`${id}-NFT-img NFT`}
-          style={isNftImgLoaded ? {
-            width: '100%',
-            maxHeight: '100%',
-            height: 'auto',
-          } : { 
-            height: '0px' 
-          }}
+          style={isNftImgLoaded ? naturalHeight : flatHeight}
           src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
           loading="lazy"
           alt={`${id} PILL NFT`}
@@ -110,7 +106,7 @@ export const NFT = ({
             max-height="100%"
             height="auto"
             style={{ opacity: 0.2 }}
-            src={NftPlaceholder} />
+            src={NftPlaceholderGif} />
         )}
         <Dialog
           open={openDialog}
@@ -119,8 +115,6 @@ export const NFT = ({
         >
           <img
             className={`${id}-NFT-img NFT`}
-            width="100%"
-            height="100%"
             src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
             alt={`${id} PILL NFT`} />
         </Dialog>
@@ -136,11 +130,14 @@ export const NFT = ({
           <Tab label="VIDEO" value="mp4" />
         </TabList>
         <TabPanel value="img">
+          <Text customStyle={absoluteErrorMessageStyle}>
+            {nftImgErrorMessage && nftImgErrorMessage}
+          </Text>
           {renderNftImage(id)}
         </TabPanel>
         <TabPanel value="mp4" style={{ position: 'relative' }}>
-          <Text customStyle={{ position: 'absolute', padding: '1rem' }}>
-            {errorMessage && errorMessage}
+          <Text customStyle={absoluteErrorMessageStyle}>
+            {nftVideoErrorMessage && nftVideoErrorMessage}
           </Text>
           {renderNftVideo(id)}
         </TabPanel>

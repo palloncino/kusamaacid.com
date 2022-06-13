@@ -8,6 +8,7 @@ export interface IComponentFrame {
 
 export interface IContainerProps {
     children?: ReactNode;
+    className?: string;
 }
 
 export interface ILink {

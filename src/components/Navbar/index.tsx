@@ -1,7 +1,6 @@
 import { SwipeableDrawer } from '@mui/material';
 import { Fragment, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container } from '../';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import { ILink } from '../../interfaces';
 import json from '../../settings.json';
@@ -19,6 +18,20 @@ export const Navbar = () => {
       setOpenedOnce(true);
     }, 10000);
   };
+
+  const handlePageLink = (e: Event, path: string) => {
+    e.preventDefault();
+    console.log({e, path});
+    const p = document.querySelector('#team');
+    if (p) {
+      p.scrollIntoView({
+        behavior: 'smooth'
+      });
+    } else {
+      window.location.pathname = '/';
+    }
+  };
+
 
   return (
     <div className="navbar-wrapper">
@@ -55,11 +68,14 @@ export const Navbar = () => {
           </SwipeableDrawer>
         </Fragment>
       ) : (
-        <Container>
-          <div className="navbar-container">
-            {routes.map(({ name, path, label }: ILink) => <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>)}
-          </div>
-        </Container>
+        <div className="navbar-container">
+          {routes.map(({ name, path, label }: ILink) => name == 'team' ? 
+            <a onClick={(e: any) => handlePageLink(e, path)}
+              key={name}
+              className="navbar-link"
+              href="#team">{label}</a> :
+            <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>)}
+        </div>
       )}
     </div>
   );

@@ -23,12 +23,12 @@
 .MuiCard-root {
     font-family: CustomFont;
     background: transparent;
-    color: #E03286;
+    /* color: #E03286; */
 }
 
 .MuiCardActions-root {
     font-family: CustomFont;
-    color: #E03286;
+    /* color: #E03286; */
 }
 
 @media only screen and (max-width: 768px) {

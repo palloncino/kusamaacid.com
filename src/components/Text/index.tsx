@@ -19,31 +19,31 @@ export const Text = ({ children, textType, customStyle }: ITextProps) => {
 
     switch (type) {
       case EnumTextType.h1:
-        output = <h1 style={customStyle} className={`text text-${type}`}>{children}</h1>;
+        output = <h1 style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</h1>;
         break;
 
       case EnumTextType.h3:
-        output = <h3 style={customStyle} className={`text text-${type}`}>{children}</h3>;
+        output = <h3 style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</h3>;
         break;
 
       case EnumTextType.h4:
-        output = <h4 style={customStyle} className={`text text-${type}`}>{children}</h4>;
+        output = <h4 style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</h4>;
         break;
 
       case EnumTextType.regular:
-        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
+        output = <p style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</p>;
         break;
 
       case EnumTextType.small:
-        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
+        output = <p style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</p>;
         break;
 
       case EnumTextType.tooltip:
-        output = <p style={customStyle} className={`text text-${type}`}>{children}</p>;
+        output = <p style={{ margin: 0, ...customStyle}} className={`text text-${type}`}>{children}</p>;
         break;
 
       default:
-        output = <p style={customStyle} className={'text-regular'}>{children}</p>;
+        output = <p style={{ margin: 0, ...customStyle}} className={'text-regular'}>{children}</p>;
         break;
     }
 

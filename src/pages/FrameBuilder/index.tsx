@@ -5,6 +5,7 @@ import { IComponentFrame } from '../../interfaces';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 
 import './Layout.css';
+import { CustomSection } from '../../style';
 
 const ComponentFrame = ({ view }: IComponentFrame) => {
 
@@ -27,14 +28,18 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
 
   return (
     <div className={`${device} layout-wrapper`}>
-      <Navbar />
-      <Header />
+      <CustomSection width="100%" mb={'0rem'}>
+        <CustomSection width="100%" mb={'1rem'}>
+          <Header />
+        </CustomSection>
+        <CustomSection width="100%" mb={'4rem'}>
+          <Navbar />
+        </CustomSection>
+      </CustomSection>
       <div className="page-content-wrapper">
-        <Container>
-          <Suspense fallback={<Spinner />}>
-            <Component />
-          </Suspense>
-        </Container>
+        <Suspense fallback={<Spinner />}>
+          <Component />
+        </Suspense>
       </div>
     </div>
   );

@@ -6,6 +6,26 @@
       "path": "/"
     },
     {
+      "name": "team",
+      "label": "Team",
+      "path": "/#team"
+    },
+    {
+      "name": "projects",
+      "label": "Projects",
+      "path": "/#projects"
+    },
+    {
+      "name": "music",
+      "label": "Music",
+      "path": "/#music"
+    },
+    {
+      "name": "social",
+      "label": "Social",
+      "path": "/#social"
+    },
+    {
       "name": "pills",
       "label": "Pills",
       "path": "/pills"

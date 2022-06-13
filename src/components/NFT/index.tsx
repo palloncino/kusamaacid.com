@@ -98,6 +98,7 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           onPlaying={handleIsVideoPlaying}
           onClick={handleClickOnVideo}
           onError={handleVideoOnError}
+          controls
         >
           <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}.mp4`} type="video/mp4" />
         </video>
@@ -129,15 +130,17 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           </Text>
           {renderNftVideo(id)}
         </TabPanel>
-        <Text>
-          {label}
-        </Text>
-        <Text>
-          {classification}
-        </Text>
-        <Text>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Text>
+            {label}
+          </Text>
+          <Text>
+            {classification}
+          </Text>
+          <Text>
           on singular
-        </Text>
+          </Text>
+        </div>
       </TabContext>
     </div>
   );

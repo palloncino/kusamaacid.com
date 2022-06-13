@@ -56,14 +56,15 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
     return (
       <>
         <img
-          onError={() => setNftImgErrorMessage('Sorry, this NFT is not available at this time.')}
-          onLoad={() => setIsNftImgLoaded(true)}
           className={`${id}-NFT-img NFT`}
           style={isNftImgLoaded ? naturalHeight : flatHeight}
           src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}-small.png`}
           loading="lazy"
           alt={`${id} PILL NFT`}
-          onClick={handleClickNftImg} />
+          onClick={handleClickNftImg}
+          onLoad={() => setIsNftImgLoaded(true)}
+          onError={() => setNftImgErrorMessage('Sorry, this NFT is not available at this time.')}
+        />
         {!isNftImgLoaded && (
           <img
             style={{ ...naturalHeight, opacity: 0.2 }}

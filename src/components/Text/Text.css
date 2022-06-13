@@ -53,3 +53,12 @@ div, h1, h2, h3, h4, h5, h6, p, ul, li, span {
     align-items: center;
     height: 100%;
 }
+
+
+@media only screen and (max-width: 768px) {
+    .text {
+        margin: 1rem 0;
+        line-height: 1.8rem;
+        text-align: unset;
+    }
+}

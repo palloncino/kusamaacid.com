@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: CustomFont;
-    src: url(../../assets/fonts/Saira-Regular.ttf);
+    src: url(../assets/fonts/Saira-Regular.ttf);
 }
 
 .nft-wrapper {
@@ -10,6 +10,7 @@
     column-gap: 2rem;
     row-gap: 2rem;
     box-sizing: border-box;
+    margin-bottom: 4rem;
 }
 
 .nft-container {
@@ -17,7 +18,24 @@
 }
 
 .NFT {
+    position: relative;
     cursor: pointer;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: .2rem;
+    border: 2px solid #acbaba;
+    background: url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg) #0e1d2ad9;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.NFT .MuiButtonBase-root.Mui-selected {
+    color: #FEFEFE;
+    background: #0e1d2ad9;
+}
+
+.NFT .MuiButtonBase-root {
+    color: #FEFEFE;
 }
 
 .MuiCard-root {

@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
-export type ViewType = 'home' | 'pills';
+export type ViewType = 'home' | 'pills' | 'smiley';
 
 export interface IComponentFrame {
     view: ViewType;
@@ -18,8 +18,10 @@ export interface ILink {
 }
 
 export interface INFTProps {
+    baseUrlVideo?: string;
+    baseUrl: string;
     id: string;
-    classification: string;
+    classification: string | undefined;
     label: string;
 }
 
@@ -47,6 +49,6 @@ export interface INftImg {
 
 export interface INFTProps {
     id: string;
-    classification: string;
+    classification: string | undefined;
     label: string;
 }

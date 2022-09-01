@@ -10,16 +10,23 @@
 
 .header-container {
     box-sizing: border-box;
-    background: url('./BANNER-BANNER38.png');
+    background: url('./BANNER-BANNER38.png'); /* https://kusama-acid-media.s3.amazonaws.com/banners/q2.jpg */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 300px;
+    height: 380px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: .2s;
+    border-radius: .2rem;
+}
+
+.header-container:hover {
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
 }
 
 @media only screen and (max-width: 768px) {
@@ -40,18 +47,10 @@
 /* DRAWER */
 
 .MuiDrawer-root .MuiDrawer-paper {
-    background: black;
-    color: #f5f5f5;
-    /* border-right: 1px solid #e0328690; */
-    width: 75%;
-    height: 100%;
+    width: 100%;
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.MuiDrawer-root .MuiDrawer-paper .link-container {
-    min-height: 100px;
-    height: unset;
 }

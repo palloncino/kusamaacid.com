@@ -1,16 +1,22 @@
 import { SwipeableDrawer } from '@mui/material';
-import { Fragment, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
 import { ILink } from '../../interfaces';
 import json from '../../settings.json';
+import { DrawerButtonContainer, StyledNavLink } from '../../style/NavBar';
 import './Navbar.css';
 const { routes } = json;
 
+
+// const links = routes.map(link => link.name !== 'pills' ? link : undefined).filter(l => l !== undefined);
+
 export const Navbar = () => {
-  const { isMobile } = useWhatDevice();
-  const [isOpen, setIsOpen] = useState(false);
-  const [openedOnce, setOpenedOnce] = useState(false);
+  const 
+    { isMobile } = useWhatDevice(),
+    [isOpen, setIsOpen] = useState(false),
+    [openedOnce, setOpenedOnce] = useState(false),
+    navigate = useNavigate();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -19,62 +25,72 @@ export const Navbar = () => {
     }, 10000);
   };
 
-  const handlePageLink = (e: Event, path: string) => {
-    e.preventDefault();
-    console.log({e, path});
-    const p = document.querySelector('#team');
-    if (p) {
-      p.scrollIntoView({
-        behavior: 'smooth'
-      });
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, _link: ILink) => {
+    console.log({e, _link});
+    if (_link.path.includes('#')) {
+      handleInternalLink(_link);
     } else {
-      window.location.pathname = '/';
+      handleExternalLink(_link);
     }
+
+    function handleInternalLink(_link: ILink) {
+      const id = _link.path.split('#')[1];
+      console.log(id);
+      const el = document.querySelector(`#${id}`);
+      if (el) {
+        el?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function handleExternalLink(_link: ILink) {
+      return navigate(`${_link.path}`);
+    }
+
   };
 
 
   return (
     <div className="navbar-wrapper">
       {isMobile ? (
-        <Fragment>
-          <div className='drawer-button-container' onClick={toggleDrawer}>
-            <span className='drawer-button'>
-              lll
-            </span>
-          </div>
+        <div>
+          <DrawerButtonContainer onClick={toggleDrawer}>
+            menu
+          </DrawerButtonContainer>
           <SwipeableDrawer
             open={isOpen}
             onClose={toggleDrawer}
             onOpen={toggleDrawer}
             transitionDuration={{ appear: 200, enter: 200, exit: 200 }}
           >
-            <div className="swipeable-drawer-child" style={{ marginBottom: '2rem', minHeight: '14.3rem' }}>
-              {!openedOnce ? (
-                <video width="100%" autoPlay playsInline>
-                  <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_BANNERS}kusama-acid-pills-banner-dynamic.mp4`} type="video/mp4" />
-                </video>
-              ) : (
-                <div className="swipeable-drawer-child-header" />
-              )}
+            <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+
+              {
+                routes.map(({ name, path, label }: ILink) => {
+                  return (
+                    <div key={name} className="swipeable-drawer-child">
+                      <NavLink 
+                        onClick={toggleDrawer} 
+                        className="navbar-link" 
+                        to={path}>
+                        {label}
+                      </NavLink>
+                    </div>
+                  );
+                })
+              }
+
             </div>
-            {routes.map(({ name, path, label }: ILink) => {
-              return (
-                <div key={name} className="swipeable-drawer-child">
-                  <NavLink onClick={toggleDrawer} className="navbar-link" to={path}>{label}</NavLink>
-                </div>
-              );
-            })
-            }
           </SwipeableDrawer>
-        </Fragment>
+        </div>
       ) : (
         <div className="navbar-container">
-          {routes.map(({ name, path, label }: ILink) => name == 'team' ? 
-            <a onClick={(e: any) => handlePageLink(e, path)}
-              key={name}
-              className="navbar-link"
-              href="#team">{label}</a> :
-            <NavLink className="navbar-link" key={name} to={path}>{label}</NavLink>)}
+          {routes.map((link: ILink | undefined, index: number) => {
+            if (link) {
+              return <StyledNavLink key={`${link.label}-${index}`} onClick={(e) => handleClick(e, link)}>{link.label}</StyledNavLink>;
+            }
+          })}
         </div>
       )}
     </div>

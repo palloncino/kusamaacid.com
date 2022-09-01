@@ -16,96 +16,125 @@
       "path": "/#projects"
     },
     {
-      "name": "music",
-      "label": "Music",
-      "path": "/#music"
-    },
-    {
-      "name": "social",
-      "label": "Social",
-      "path": "/#social"
-    },
-    {
       "name": "pills",
       "label": "Pills",
       "path": "/pills"
+    },
+    {
+      "name": "smiley",
+      "label": "Smiley",
+      "path": "/smiley"
     }
   ],
   "pills": [
     {
       "id": "ANGEL",
       "label": "Acid Angel",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "BOB_MARLEY",
       "label": "Acid Bob Marley",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "BULL",
       "label": "Acid Bull",
-      "classification": "limited"
+      "classification": "Limited"
     },
     {
       "id": "MITSUBISHI",
       "label": "Acid Mitsubishi",
-      "classification": "limited"
+      "classification": "Limited"
     },
     {
       "id": "DEVIL",
       "label": "Acid Devil",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "DRAGON",
       "label": "Acid Dragon",
-      "classification": "unique"
+      "classification": "Unique"
     },
     {
       "id": "GORILLA",
       "label": "Acid Gorilla",
-      "classification": "unique"
+      "classification": "Unique"
     },
     {
       "id": "KING",
       "label": "Acid King",
-      "classification": "unique"
+      "classification": "Unique"
     },
     {
       "id": "KITTY",
       "label": "Acid Kitty",
-      "classification": "unique"
+      "classification": "Unique"
     },
     {
       "id": "NINJA",
       "label": "Acid Ninja",
-      "classification": "unique"
+      "classification": "Unique"
     },
     {
       "id": "PACMAN",
       "label": "Acid Pacman",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "PENGUIN",
       "label": "Acid Penguin",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "POKEMON",
       "label": "Acid Pokémon",
-      "classification": "limited"
+      "classification": "Limited"
     },
     {
       "id": "TRUMP",
       "label": "Acid Trump",
-      "classification": "legendary"
+      "classification": "Legendary"
     },
     {
       "id": "BUTTERFLY",
       "label": "Acid Butterfly",
-      "classification": "limited"
+      "classification": "Limited"
+    }
+  ],
+  "smiley": [
+    {
+      "id": "SMILE_BLACK",
+      "label": "Black Smile"
+    },
+    {
+      "id": "SMILE_BLUE",
+      "label": "Blue Smile"
+    },
+    {
+      "id": "SMILE_RED",
+      "label": "Red Smile"
+    },
+    {
+      "id": "SMILE_PINK",
+      "label": "Pink Smile"
+    },
+    {
+      "id": "SMILE_ORANGE",
+      "label": "Orange Smile"
+    },
+    {
+      "id": "SMILE_LIGHT_BLUE",
+      "label": "Light Blue Smile"
+    },
+    {
+      "id": "SMILE_VIOLET",
+      "label": "Violet Smile"
+    },
+    {
+      "id": "SMILE_WHITE",
+      "label": "White Smile"
     }
   ]
 }

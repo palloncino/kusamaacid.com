@@ -7,7 +7,7 @@ import { useWhatDevice } from '../../hooks/useWhatDevice';
 import { INFTProps } from '../../interfaces';
 import './NFT.css';
 
-export const NFT = ({ id, classification, label }: INFTProps) => {
+export const NFT = ({ id, classification, label, baseUrl, baseUrlVideo }: INFTProps) => {
   const [activeTab, setActiveTab] = useState('img');
   const [isNftVideoLoading, setIsNftVideoLoading] = useState(false);
   const [isNftImgLoaded, setIsNftImgLoaded] = useState(false);
@@ -56,11 +56,11 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
     return (
       <>
         <img
-          className={`${id}-NFT-img NFT`}
+          className={`${id}-NFT-img`}
           style={isNftImgLoaded ? naturalHeight : flatHeight}
-          src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}-small.png`}
+          src={`${baseUrl}${id}-small.png`}
           loading="lazy"
-          alt={`${id} PILL NFT`}
+          alt={`${id} NFT`}
           onClick={handleClickNftImg}
           onLoad={() => setIsNftImgLoaded(true)}
           onError={() => setNftImgErrorMessage('Sorry, this NFT is not available at this time.')}
@@ -76,19 +76,19 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           aria-labelledby="responsive-dialog-title"
         >
           <img
-            className={`${id}-NFT-img NFT`}
-            src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}${id}.png`}
-            alt={`${id} PILL NFT`} />
+            className={`${id}-NFT-img`}
+            src={`${baseUrl}${id}.png`}
+            alt={`${id} NFT`} />
         </Dialog>
       </>
     );
   };
 
-  const renderNftVideo = (pill: string) => {
+  const renderNftVideo = (name: string) => {
     return (
       <>
         <video
-          className={`${pill}-NFT-mp4 NFT`}
+          className={`${name}-NFT-mp4`}
           style={!isNftVideoLoading ? naturalHeight : flatHeight}
           playsInline
           autoPlay
@@ -100,7 +100,7 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           onError={handleVideoOnError}
           controls
         >
-          <source src={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}${pill}.mp4`} type="video/mp4" />
+          <source src={`${baseUrlVideo || baseUrl}${name}.mp4`} type="video/mp4" />
         </video>
         {isNftVideoLoading && (
           <img
@@ -115,8 +115,8 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
     <div className="NFT">
       <TabContext value={activeTab}>
         <TabList onChange={handleChange} aria-label="lab API tabs example">
-          <Tab label="IMG" value="img" />
-          <Tab label="VIDEO" value="mp4" />
+          <Tab label="Static" value="img" />
+          <Tab label="Move" value="mp4" />
         </TabList>
         <TabPanel value="img">
           <Text customStyle={errorMessageStyle}>
@@ -130,17 +130,29 @@ export const NFT = ({ id, classification, label }: INFTProps) => {
           </Text>
           {renderNftVideo(id)}
         </TabPanel>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Text>
-            {label}
-          </Text>
-          <Text>
-            {classification}
-          </Text>
-          <Text>
-          on singular
-          </Text>
+
+        <div style={{
+          position: 'absolute',
+          left: '1.6rem',
+          bottom: '2rem',
+          background: '#0e1d2ad9',
+          padding: '.2rem .4rem' 
+        }}>
+          {label}
         </div>
+
+        {classification && (
+          <div style={{
+            position: 'absolute',
+            bottom: '2rem',
+            right: '1.6rem',
+            background: '#0e1d2ad9',
+            padding: '.2rem .4rem' 
+          }}>
+            {classification}
+          </div>
+        )}
+
       </TabContext>
     </div>
   );

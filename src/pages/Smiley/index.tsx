@@ -4,18 +4,18 @@ import json from '../../settings.json';
 import { CustomSection } from '../../style';
 import '../../style/NFTs.css';
 
-const { pills } = json;
+const { smiley } = json;
 
-export default function Pills() {
+export default function Smiley() {
 
   return (
-    <div className="pills-page-wrapper">
+    <div className="smiley-page-wrapper">
       
-      <CustomSection mb={'1rem'} id={'Pills'}>
+      <CustomSection mb={'1rem'} id={'Smiley'}>
 
         <ProjectCard 
-          mainMediaUrl={'https://kusama-acid-media.s3.amazonaws.com/acid_pills/BUTTERFLY.mp4'}
-          bannerUrl={'https://kusama-acid-media.s3.amazonaws.com/smiley/bannerSmiley.png'}
+          mainMediaUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY}SMILE_BLU.mp4`}
+          bannerUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY}bannerSmiley.png`}
           bannerTextTitle={'Primary'}
           bannerTextSubTitle={'Secondary'}
           paragraph={`
@@ -40,14 +40,14 @@ export default function Pills() {
       </CustomSection>
 
       <div className="nft-wrapper">
-        {pills.map(({ id, classification, label }) => {
+        {smiley.map(({ id, label }) => {
           return (
             <NFT
-              baseUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS_THUMBNAILS}`}
-              baseUrlVideo={`${process.env.REACT_APP_KUSAMA_BUCKET_PILLS}`}
+              baseUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_PNG}`}
+              baseUrlVideo={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_VIDEOS}`}
               key={id}
               id={id}
-              classification={classification}
+              classification={undefined}
               label={label}
             />
           );

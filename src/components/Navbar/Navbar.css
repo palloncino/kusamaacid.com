@@ -3,23 +3,12 @@
 }
 
 .navbar-container {
-    /* background: #2F3237; */
     box-sizing: border-box;
-    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-}
-
-.drawer-button-container {
-    position: absolute;
-    right: 1.5rem;
-    top: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
+    box-sizing: border-box;
 }
 
 .drawer-button {
@@ -37,7 +26,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    
+    color: #FEFEFE;
 }
 
 .navbar-link:hover {

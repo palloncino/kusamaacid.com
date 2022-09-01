@@ -1,138 +1,320 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Text } from '../../components';
-import { BackgroundImage, CustomSection, SectionChild_1_body, SectionChild_1_body_1, SectionChild_1_body_1_1, SectionChild_1_body_1_2, SectionChild_1_body_1_2_header, SectionChild_1_body_2, SectionChild_1_body_2_1, SectionChild_1_body_2_1_header, SectionChild_1_body_2_2, SectionChild_1_head, Section_1 } from '../../style';
+import ProjectCard from '../../components/ProjectCard';
+import { useWhatDevice } from '../../hooks/useWhatDevice';
+import { BackgroundImage, CustomSection } from '../../style';
+import {
+  SectionChild_1_body,
+  SectionChild_1_body_1,
+  SectionChild_1_body_1_1,
+  SectionChild_1_body_1_2, SectionChild_1_body_2,
+  SectionChild_1_body_2_1, SectionChild_1_body_2_2, Section_1
+} from '../../style/Section1';
+import {
+  SectionChildBody, Section_2
+} from '../../style/Section2';
+import {
+  Section_Text_Head_Common, Section_Text_Head_ID
+} from '../../style/SectionCommon';
 import './Home.css';
+
+const grey01 = '#ACBBCB';
 
 export default function Home() {
 
+  const {isMobile} = useWhatDevice();
+
+  const [bgOffset, setBgOffset] = useState<number>();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const num = (document.querySelector('#projects') as HTMLElement)?.offsetLeft;
+    if (num) {
+      setBgOffset(num);
+    }
+  }, []);
+
   return (
     <>
-      <CustomSection key={1} mb={'1rem'}>
-        <Section_1 id={'team'}>
+      <CustomSection mb={'1rem'}>
+        
+        {/* TEAM */}
+        <CustomSection mb={isMobile ? '1rem' : '20rem'}>
+          <Section_1 id={'team'}>
 
-          {/* HEAD */}
-          <CustomSection mb={'2rem'}>
-            <SectionChild_1_head>
+            {/* HEAD */}
+            <CustomSection mb={'1rem'}>
+              <Section_Text_Head_ID bg="https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg" isMobile={isMobile}>
 
-              <Text textType='h1' customStyle={{ textAlign: 'center' }}>
-                  TEAM
-              </Text>
-              <Text textType='h3' customStyle={{ textAlign: 'center' }}>
-                  SUB Title about BIO
-              </Text>
+                <CustomSection mb={'0rem'}>
+                  <Text textType={isMobile ? 'h1_large' : 'h1_xLarge'} customStyle={{background: '#0e1d2ad9', padding: '.2rem .4rem' }}>
+                    THE TEAM
+                  </Text>
+                </CustomSection>
 
-            </SectionChild_1_head>
-          </CustomSection>
+                <CustomSection mb={'0rem'} css="width: 100%; display: flex;justify-content: center;">
+                  <Text textType="h3" customStyle={{background: '#0e1d2ad9', padding: '.2rem .4rem', color: grey01 }}>
+                    Bio & Works
+                  </Text>
+                </CustomSection>
 
-          {/* BODY */}
-          <SectionChild_1_body bg={undefined}>
+              </Section_Text_Head_ID>
+            </CustomSection>
 
-            <CustomSection mb={'0rem'} id={'team'}>
+            {/* BODY */}
+            <SectionChild_1_body bg={undefined} isMobile={isMobile}>
+
               <SectionChild_1_body_1>
 
+                {/* Photo */}
                 <SectionChild_1_body_1_1>
                   <BackgroundImage width="width: 100%;"
                     css={`
-                      // transform: rotateY(0deg) rotate(-1deg);
-                      width: 100%;
-                      height: 500px;
-                      background: url(https://picsum.photos/500);
-                      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-                      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);`} />
+                    // transform: rotateY(0deg) rotate(-1deg);
+                    width: 100%;
+                    height: 400px;
+                    background: url(https://kusama-acid-media.s3.amazonaws.com/all/gianste1.jpg);
+                    transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                    border-radius: .2rem;`} />
                 </SectionChild_1_body_1_1>
 
-                <SectionChild_1_body_1_2>
+                {/* BIO - Why am I .. */}
+                <CustomSection mt={'1rem'}>
+                  <SectionChild_1_body_1_2>
 
-                  <SectionChild_1_body_1_2_header>
+                    <CustomSection p={'1rem 1.2rem'} css="height: 100%;box-sizing: border-box;border: 2px solid #acbbcb; border-radius: .2rem;background: url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg);background-repeat: no-repeat;background-position: center;">
 
-                    <CustomSection mb={'0rem'}>
-                      <Text textType="h3">
-                        BIO
-                      </Text>
+                      <Section_Text_Head_Common>
+
+                        <CustomSection css='display: flex;align-items: center;justify-content: space-between;padding-bottom:.4rem;border-bottom: 2px solid #acbbcb;'>
+                          <Text textType="h1">
+                            BIO{'\u00A0'}
+                          </Text>
+                          <Text textType="large">
+                            {'\u00A0'} Why am I what huh
+                          </Text>
+                        </CustomSection>
+
+                      </Section_Text_Head_Common>
+
+                      <CustomSection>
+                        <Text textType="regular" customStyle={{color: grey01}}>
+                          Kusama Acid is a project born and conceived by
+                          Gianste, an electronic music producer.
+                          In the frst two collections acid smiley and acid
+                          pills he was self-taught in everything, while in
+                          the collections acid mouth and acid people he
+                          will be helped by an outside team for the
+                          completion, divide and have a better realization
+                          of the project itself.
+                          The project was created to create a cohesion
+                          between electronic music and 3D art, something
+                          unique and very special.
+                        </Text>
+                      </CustomSection>
+
                     </CustomSection>
-
-                    <CustomSection mb={'0rem'}>
-                      <Text textType="h4">
-                        Why am I what huh
-                      </Text>
-                    </CustomSection>
-
-                  </SectionChild_1_body_1_2_header>
-
-                  <CustomSection>
-                    <Text textType="regular">
-                    Kusama Acid is a project born and conceived by
-                    Gianste, an electronic music producer.
-                    In the frst two collections acid smiley and acid
-                    pills he was self-taught in everything, while in
-                    the collections acid mouth and acid people he
-                    will be helped by an outside team for the
-                    completion, divide and have a better realization
-                    of the project itself.
-                    The project was created to create a cohesion
-                    between electronic music and 3D art, something
-                    unique and very special.
-                    </Text>
-                  </CustomSection>
-                </SectionChild_1_body_1_2>
+                  </SectionChild_1_body_1_2>
+                </CustomSection>
 
               </SectionChild_1_body_1>
-            </CustomSection>
 
-            <CustomSection mb={'0rem'} id={'works'}>
               <SectionChild_1_body_2>
 
-                <SectionChild_1_body_2_1>
+                {/* Photo - Mobile ONLY */}
+                {isMobile && (
+                  <SectionChild_1_body_2_2>
+                    <CustomSection mt={'1rem'}>
+                      <BackgroundImage 
+                        css={`
+                        // transform: rotateY(0deg) rotate(-1deg);
+                        width: 100%;
+                        height: 520px;
+                        background: url(https://kusama-acid-media.s3.amazonaws.com/all/cachedImage.png);
+                        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                        border-radius: .2rem;
+                      `}/>
+                    </CustomSection>
+                  </SectionChild_1_body_2_2>
+                )}
 
-                  <SectionChild_1_body_2_1_header>
+                <SectionChild_1_body_2_1 isMobile={isMobile} css="background: url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg);background-repeat: no-repeat;background-position: center;">
 
-                    <CustomSection mb={'0rem'}>
-                      <Text textType="h3" customStyle={{ textAlign: 'right' }}>
-                        WORKS
+                  {/* Works - Someth.. */}
+                  <CustomSection mt={isMobile ? '1rem' : '0rem'} p={'1rem 1.2rem'} css="height: 100%;box-sizing: border-box;border: 2px solid #acbbcb; border-radius: .2rem;">
+
+                    <Section_Text_Head_Common>
+
+                      <CustomSection css="display: flex;align-items: center;justify-content: space-between;padding-bottom:.4rem;border-bottom: 2px solid #acbbcb;">
+
+                        <Text textType="h1">
+                        WORKS{'\u00A0'}
+                        </Text>
+
+                        <Text textType="large">
+                          {'\u00A0'}Something about what
+                        </Text>
+
+                      </CustomSection>
+
+                    </Section_Text_Head_Common>
+
+                    <CustomSection>
+                      <Text textType="regular" customStyle={{color: grey01}}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi architecto fugit itaque consequuntur dolore quod ipsum vero repellendus. Omnis at animi error blanditiis obcaecati, veniam aspernatur quas eius! Impedit, magnam!
                       </Text>
                     </CustomSection>
 
-                    <CustomSection mb={'0rem'}>
-                      <Text textType="h4"  customStyle={{ textAlign: 'right' }}>
-                        Why am I what huh
-                      </Text>
-                    </CustomSection>
-
-                  </SectionChild_1_body_2_1_header>
-
-                  <CustomSection>
-                    <Text textType="regular"  customStyle={{ textAlign: 'right' }}>
-                    Kusama Acid is a project born and conceived by
-                    Gianste, an electronic music producer.
-                    In the frst two collections acid smiley and acid
-                    pills he was self-taught in everything, while in
-                    the collections acid mouth and acid people he
-                    will be helped by an outside team for the
-                    completion, divide and have a better realization
-                    of the project itself.
-                    The project was created to create a cohesion
-                    between electronic music and 3D art, something
-                    unique and very special.
-                    </Text>
                   </CustomSection>
+                  
                 </SectionChild_1_body_2_1>
-
-                <SectionChild_1_body_2_2>
-                  <BackgroundImage 
-                    css={`
-                      // transform: rotateY(0deg) rotate(-1deg);
-                      width: 100%;
-                      height: 500px;
-                      background: url(https://picsum.photos/600);
-                      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-                      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-                    `}/>
-                </SectionChild_1_body_2_2>
+                
+                {/* Photo - Desktop ONLY */}
+                {!isMobile && (
+                  <SectionChild_1_body_2_2>
+                    <BackgroundImage 
+                      css={`
+                        // transform: rotateY(0deg) rotate(-1deg);
+                        width: 100%;
+                        height: 520px;
+                        background: url(https://kusama-acid-media.s3.amazonaws.com/all/cachedImage.png);
+                        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                        border-radius: .2rem;
+                      `}/>
+                  </SectionChild_1_body_2_2>
+                )}
 
               </SectionChild_1_body_2>
+
+            </SectionChild_1_body>
+
+          </Section_1>
+        </CustomSection>
+        
+        {/* PROJECTS */}
+        <CustomSection mb={'10rem'}>
+          <Section_2 id={'projects'}>
+            <div style={{ 
+              position: 'absolute',
+              top: 0,
+              left: `-${bgOffset}px`,
+              zIndex: -1,
+              // background: '#0e1d2ac9',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              height: '100%',
+              width: window.innerWidth,
+            }}>
+          
+            </div>
+
+            {/* HEAD */}
+            <CustomSection mt={'1rem'} mb={isMobile ? '1rem' : '1rem'}>
+              <Section_Text_Head_ID isMobile={isMobile} bg="https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/2-scaled.jpg">
+
+                <CustomSection mb={'0rem'}>
+                  <Text textType={isMobile ? 'h1_large' : 'h1_xLarge'} customStyle={{background: '#0e1d2ad9', padding: '.2rem .4rem' }}>
+                      NFT{'\''}s PROJECTS
+                  </Text>
+                </CustomSection>
+
+                <CustomSection mb={'0rem'}>
+                  <Text textType="h3" customStyle={{background: '#0e1d2ad9', padding: '.2rem .4rem', color: grey01 }}>
+                      Smiley, Pills, Collab, Roadmap
+                  </Text>
+                </CustomSection>
+
+              </Section_Text_Head_ID>
             </CustomSection>
 
-          </SectionChild_1_body>
-        </Section_1>
+            {/* BODY */}
+            <SectionChildBody bg={undefined} style={{ display: 'flex', flexDirection: 'column' }}>
+
+              {/* Smiley */}
+              <CustomSection mb={'1rem'} id={'Smiley'}>
+
+                <ProjectCard 
+                  mainMediaUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_PNG}SMILE_BLU.mp4`}
+                  bannerUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_PNG}bannerSmiley.png`}
+                  bannerTextTitle={'Primary'}
+                  bannerTextSubTitle={'Secondary'}
+                  paragraph={`
+                  Acid Smiley was the first approach to NFT's.
+                  A very restrained collection of 10 unique pieces that vary in color with acid
+                  electronic bases.
+                  The choice and everything has started from here.
+                  `}
+                  buttons={[
+                    {
+                      variant: 'outlined',
+                      label: 'View catalog',
+                      callback: () => navigate('/smiley')
+                    }
+                  ]}
+                />
+              </CustomSection>
+
+              {/* Pills */}
+              <CustomSection mb={'1rem'} id={'Pills'}>
+
+                <ProjectCard 
+                  mainMediaUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_VIDEO}/BUTTERFLY.mp4`}
+                  bannerUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_PNG}bannerSmiley.png`}
+                  bannerTextTitle={'Primary'}
+                  bannerTextSubTitle={'Secondary'}
+                  paragraph={`
+                  Acid Smiley was the first approach to NFT's.
+                  A very restrained collection of 10 unique pieces that vary in color with acid
+                  electronic bases.
+                  The choice and everything has started from here.
+                  `}
+                  buttons={[
+                    {
+                      variant: 'outlined',
+                      label: 'View catalog',
+                      callback: () => navigate('/pills')
+                    }
+                  ]}
+                />
+              </CustomSection>
+
+              {/* Pills */}
+              <CustomSection mb={'1rem'} id={'Pills'}>
+
+                <ProjectCard 
+                  // mainMediaUrl={'https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/a56b4c48-49cc-4929-a748-5d4842b67c4b.jpg'}
+                  mainImgUrl={'https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/a56b4c48-49cc-4929-a748-5d4842b67c4b.jpg'}
+                  bannerUrl={`${process.env.REACT_APP_KUSAMA_BUCKET_SMILEY_PNG}bannerSmiley.png`}
+                  bannerTextTitle={'Primary'}
+                  bannerTextSubTitle={'Secondary'}
+                  paragraph={`
+                  Acid Smiley was the first approach to NFT's.
+                  A very restrained collection of 10 unique pieces that vary in color with acid
+                  electronic bases.
+                  The choice and everything has started from here.
+                  `}
+                  buttons={[
+                    {
+                      variant: 'outlined',
+                      label: 'View catalog',
+                      callback: () => console.log(1)
+                    }
+                  ]}
+                />
+              </CustomSection>
+
+
+            </SectionChildBody>
+
+          </Section_2>
+        </CustomSection>
+
       </CustomSection>
     </>
   );

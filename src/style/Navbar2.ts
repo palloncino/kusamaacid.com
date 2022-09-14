@@ -17,7 +17,20 @@ const NavBar2Container = styled.div<{isMobile?: boolean;}>`
     `}
 `;
 
+const StyledSocialLink = styled.span<{color?: string;icon: string;}>`
+  padding-left: 2rem;
+  transition: .2s;
+  background: ${({icon}) => icon ? `url(${icon})` : 'transparent' };
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  &:hover {
+    color: #FEFEFE;
+  }
+`;
+
 
 export {
-  NavBar2Container
+  NavBar2Container,
+  StyledSocialLink
 };

@@ -1,7 +1,8 @@
 import './Navbar2.css';
 import { Text } from '../../components';
 import { useWhatDevice } from '../../hooks/useWhatDevice';
-import { NavBar2Container } from '../../style/Navbar2';
+import { NavBar2Container, StyledSocialLink } from '../../style/Navbar2';
+import instaSvg from '../../assets/media/insta.svg';
 
 export const Navbar2 = () => {
   const { isMobile } = useWhatDevice();
@@ -10,9 +11,11 @@ export const Navbar2 = () => {
     <div className="navbar2-wrapper">
       <NavBar2Container isMobile={isMobile}>
 
-        <div className="navbar2__child3">
+        <div className="navbar2__child3" style={{ cursor: 'pointer' }}>
           <Text textType={isMobile ? 'small' : 'regular'} customStyle={{ lineHeight: '1.5rem', color: '#ACBBCB', padding: '0 1rem' }}>
-          _GIANSTE_
+            <StyledSocialLink icon={instaSvg} onClick={() => window.location.href = 'https://www.instagram.com/gianste___/'}>
+                _GIANSTE_
+            </StyledSocialLink>
           </Text>
         </div>
         

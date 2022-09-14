@@ -11,14 +11,14 @@ const StyledNavLink = styled.div<{isMobile?: boolean;}>`
     cursor: pointer;
     text-decoration: none;
     transition: .2s;
-    font-size: 1.4rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    margin-right: .4rem;
+    margin-right: 1rem;
     height: auto;
     padding: .2rem 1rem;
-    background: url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg);
-    background-position: center;
-    background-size: cover;
+    border-bottom: 2px solid #0e1d2ad9;
+    background: #0e1d2a69;
+    color: #FEFEFE;
 
     :last-child {
       margin-right: 0rem;
@@ -27,6 +27,7 @@ const StyledNavLink = styled.div<{isMobile?: boolean;}>`
     :hover {
       transform: scale(.98);
       z-index: 1000;
+      color: #FEFEFE;
     }
 
     :before {
@@ -37,7 +38,7 @@ const StyledNavLink = styled.div<{isMobile?: boolean;}>`
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #fff;
+      background-color: #FEFEFE;
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }

@@ -26,7 +26,6 @@ export const Navbar = () => {
   };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, _link: ILink) => {
-    console.log({e, _link});
     if (_link.path.includes('#')) {
       handleInternalLink(_link);
     } else {
@@ -35,7 +34,6 @@ export const Navbar = () => {
 
     function handleInternalLink(_link: ILink) {
       const id = _link.path.split('#')[1];
-      console.log(id);
       const el = document.querySelector(`#${id}`);
       if (el) {
         el?.scrollIntoView({

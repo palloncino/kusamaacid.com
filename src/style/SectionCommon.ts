@@ -14,7 +14,7 @@ const Section_Text_Head_ID = styled.div<{bg?: string;isMobile?: boolean;}>`
     flex-direction: column;
     padding: .4rem;
     border-radius: .2rem;
-    height: 400px;
+    height: 220px;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;

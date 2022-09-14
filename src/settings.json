@@ -8,12 +8,17 @@
     {
       "name": "team",
       "label": "Team",
-      "path": "/#team"
+      "path": "/team"
+    },
+    {
+      "name": "music",
+      "label": "Music",
+      "path": "/music"
     },
     {
       "name": "projects",
       "label": "Projects",
-      "path": "/#projects"
+      "path": "/projects"
     },
     {
       "name": "pills",

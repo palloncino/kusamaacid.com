@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
-export type ViewType = 'home' | 'pills' | 'smiley';
+export type ViewType = 'home' | 'pills' | 'smiley' | 'projects' | 'team' | 'music';
 
 export interface IComponentFrame {
     view: ViewType;

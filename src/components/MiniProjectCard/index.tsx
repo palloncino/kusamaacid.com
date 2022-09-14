@@ -18,7 +18,7 @@ const MiniProjectCard = ({
   mainMediaUrl,
   mainImgUrl,
   bannerUrl,
-  bannerTextTitle,
+  bannerTextTitle = undefined,
   bannerTextSubTitle,
   paragraph,
   buttons
@@ -26,9 +26,9 @@ const MiniProjectCard = ({
     id: string,
     mainMediaUrl?: string;
     mainImgUrl?: string;
-    bannerUrl: string;
-    bannerTextTitle: string;
-    bannerTextSubTitle: string;
+    bannerUrl?: string;
+    bannerTextTitle?: string | undefined;
+    bannerTextSubTitle?: string;
     paragraph: string;
     buttons?: Button[];
 }) => {
@@ -78,7 +78,7 @@ const MiniProjectCard = ({
       </SectionLeftBoxMedia>
 
       {/* Text   */}
-      <SectionTextBoxRight id={`getBrotherHeight-${id}`} css="height: 100%;box-sizing; border-box;">
+      <SectionTextBoxRight id={`getBrotherHeight-${id}`} css="height: 100%;box-sizing; border-box;width: 100%;">
 
         <CustomSection mt={isMobile ? '1rem' : '0rem'} css="box-sizing; border-box;height: 100%;border-radius: .2rem;">
 
@@ -95,9 +95,10 @@ const MiniProjectCard = ({
 
             {/* Banner Text */}
 
-            <Section_Text_Head_Common
-              border="none"
-              css={`
+            {bannerUrl && (
+              <Section_Text_Head_Common
+                border="none"
+                css={`
               height: 30px;
               min-height: 30px;
               background: url(${bannerUrl});
@@ -106,10 +107,9 @@ const MiniProjectCard = ({
               background-position: left;
               margin-bottom: 0rem;
               `} />
+            )}
 
-            {/* Text   */}
-            <CustomSection>
-              {/*
+            {bannerTextTitle && (
               <Section_Text_Head_Common css='border-bottom: 2px solid #acbbcb;'>
                 <CustomSection css='display: flex;align-items: center;justify-content: space-between;'>
 
@@ -124,7 +124,10 @@ const MiniProjectCard = ({
                 </CustomSection>
 
               </Section_Text_Head_Common>
-              */}
+            )}
+
+            {/* Text   */}
+            <CustomSection>
               <Text textType="small" customStyle={{ color: '#ACBBCB', lineHeight: '1.5rem' }}>
                 {paragraph}
               </Text>

@@ -318,7 +318,7 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
               <CustomSection width="100%" mb={isMobile ? '0rem' : '.4rem'}>
                 <Navbar2/>
               </CustomSection>
-              <CustomSection width="100%" mb={isMobile ? '0rem' : '.4rem'}>
+              <CustomSection width="100%" mb={isMobile ? '0rem' : '0rem'}>
                 <Navbar />
               </CustomSection>
             </div>

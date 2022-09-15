@@ -1,17 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { Text } from '../../components';
 
 export default function Music() {
     
   return (
     <AnimatePresence>
-      <motion.div 
-        key={`team-page-${Math.random()*1000}`}
+      <motion.div
+        key={`music-page-${Math.random()*1000}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
         
-        <div style={{
+        {/* <div style={{
           height: '100%',
           width: '100%',
           display: 'flex',
@@ -24,15 +25,16 @@ export default function Music() {
             left: 0,
             height: '100%',
             width: '100%',
-            background: 'url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/1-scaled.jpg)',
+            background: 'url(https://acidpilsnft.tempurl.host/wp-content/uploads/2022/08/3-scaled.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             zIndex: -1
-          }}/>
-          <h1>MUSIC</h1>
-        </div>
-
+          }}/> */}
+        <Text>
+            MUSIC
+        </Text>
+        {/* </div> */}
       </motion.div>
     </AnimatePresence> 
   );

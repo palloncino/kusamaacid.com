@@ -12,7 +12,7 @@ export default function Smiley() {
   return (
     <AnimatePresence>
       <motion.div 
-        key={`team-page-${Math.random()*1000}`}
+        key={`smiley-page-${Math.random()*1000}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

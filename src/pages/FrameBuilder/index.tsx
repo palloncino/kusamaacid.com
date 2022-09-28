@@ -327,11 +327,12 @@ const ComponentFrame = ({ view }: IComponentFrame) => {
 
       </CustomSection>
 
-      <Suspense fallback={<Spinner />}>
+      {/* <Suspense fallback={<Spinner />}> */}
+      <Suspense fallback={() => ''}>
         <Component />
       </Suspense>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

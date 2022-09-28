@@ -39,7 +39,7 @@ const SectionLeftBoxMedia = styled.div<{isMobile?: boolean;bg?: string;css?: str
   height: 100%;
   position: relative;
 	flex: 2;
-  transition: .5s;
+  // transition: .5s;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);

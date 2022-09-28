@@ -14,14 +14,14 @@ export default function Projects() {
 
   const {isMobile} = useWhatDevice();
 
-  const [bgOffset, setBgOffset] = useState<number>();
+  // const [bgOffset, setBgOffset] = useState<number>();
 
-  useEffect(() => {
-    const num = (document.querySelector('#projects') as HTMLElement)?.offsetLeft;
-    if (num) {
-      setBgOffset(num);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const num = (document.querySelector('#projects') as HTMLElement)?.offsetLeft;
+  //   if (num) {
+  //     setBgOffset(num);
+  //   }
+  // }, []);
     
   return (
     <AnimatePresence>
@@ -36,7 +36,7 @@ export default function Projects() {
             <div style={{ 
               position: 'absolute',
               top: 0,
-              left: `-${bgOffset}px`,
+              // left: `-${bgOffset}px`,
               zIndex: -1,
               // background: '#0e1d2ac9',
               backgroundSize: 'cover',
